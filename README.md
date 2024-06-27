@@ -50,6 +50,17 @@ git branch -M main
 git push -u origin main
 ```
 
+## ARRANCAR REACT ROUTER DOM
+['React Router'](https://reactrouter.com)
+
+```
+yarn add react-router-dom@6
+```
+
+> ### NOTA IMPORTANTE:
+> Hay que especificar que la versión que vamos a instalar es la 6 (@6) ya que hay muchas diferencias importantes respecto a la 5.
+
+
 ---
 
 ### LINKS DE INTERÉS:  
@@ -216,6 +227,110 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 
 ```javascript
 throw new Error ('action.type "ABC" todavía no se ha definido');
+```
+
+
+
+---
+
+# 🖌️ 239. Configuración de Rutas principales y secundarias
+
+En esta clse hemos instalado React Router DOM para poder trabajar las rutas.
+
+No vamos a usar rutas públicas y privadas.
+
+Vamos a configurar el `AppRouter.jsx` de la carpeta "router" de manera que apunte (según la url) a las rutas establecidas en la carpeta "routes" dentro de las respectivas carpetas "auth" y "journal".
+
+
+## AUTH
+En la carpeta `auth/pages` creamos las páginas `LoginPage.jsx` y `RegisterPage.jsx` (además, creamos el archivo de barril `index.js` con las dos páginas)
+```
+📁 auth
+    📂 pages
+        📄 LoginPage.jsx
+        📄 RegisterPage.jsx
+```
+
+En la carpeta `auth/routes` creamos la página `AuthRoutes.jsx`.
+```
+📁 auth
+    📂 routes
+        📄 AuthRoutes.jsx
+```
+
+En `AuthRoutes.jsx` redireccionaremos según la url a cada página y en caso de estar en la raiz, sin estar dentro de la ruta "auth", te lleva a "login".
+```javascript
+<Routes>
+    <Route path="login" element= { <LoginPage /> } />
+    <Route path="register" element= { <RegisterPage /> } />
+
+    <Route path="/*" element={ <Navigate to="/auth/login" /> } />
+
+</Routes>
+```
+
+## JOURNAL
+
+En la carpeta `journal/pages` creamos la página `JournalPage.jsx`.
+
+```
+📁 journal
+    📂 pages
+        📄 JournalPage.jsx
+```
+
+En la carpeta `journal/routes` creamos la página `JournalRoutes.jsx`.
+```
+📁 journal
+    📂 routes
+        📄 JournalRoutes.jsx
+```
+En `JournalRoutes.jsx` si está en la raiz, te lleva a `JournalPage`, si no, navega a la raiz.
+
+```javascript
+<Routes>
+    <Route path="/" element={ <JournalPage /> } />
+
+    <Route path="/*" element={ <Navigate to="/" /> } />
+
+</Routes>
+```
+
+## ROUTER
+
+En la carpeta `router` creamos `AppRouter.jsx`.
+```
+📂 router
+    📄 AppRouter.jsx
+```
+
+En `AppRouter.jsx` si está en `/auth/*` te lleva a las rutas de la carpeta "auth" `<AuthRoutes/>`, si no, te lleva a las rutas de la carpeta "journal" `<JournalRoutes />`.
+
+```javascript
+<Routes>
+    
+    {/* Login y registro */}
+    <Route path="/auth/*" element={ <AuthRoutes/> } />
+    
+    {/* JournalApp */}
+    <Route path="/*" element={ <JournalRoutes /> } />
+
+</Routes>
+```
+
+
+## MAIN.JSX
+
+Para poder utilizar las rutas, la llamada al componente principal tiene que estar dentro de `BrowserRouter`, que como hemos visto anteriormente es un Componente de Nivel Suprerior (Higher-Order Component "HOC").
+
+Se recomiendo poner en el componente superior, ya que todos los hijos que estén dentro de ese HOC tendrán acceso a información que tenga este padre (siempre que interese que esto sea así y queremos que todos los hijos tengan acceso a esta información).
+
+Este `BrowserRouter` se podría haber puesto en `JournalApp.jsx` y funciona perfectamente, pero como hemos dicho, lo ponemos en el de nivel superior `main.jsx`
+
+```javascript
+<BrowserRouter>
+    <JournalApp />
+</BrowserRouter>
 ```
 
 
