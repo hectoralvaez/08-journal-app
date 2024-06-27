@@ -218,6 +218,18 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+
+
+# 🖌️ 236. Temas puntuales de la sección
+
+## ¿Qué veremos en esta sección?
+
+- Material UI
+- Diferentes componentes de material
+- Uso de funciones propias de MaterialUI
+- Configuración de temas personalizados
+
+
 # 🆕 INICIO SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
 
 <br />
