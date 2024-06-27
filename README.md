@@ -209,6 +209,60 @@ El objeto `screen` de React Testing Library (RTL) proporciona métodos para cons
 
 ---
 
+### Material UI (MUI):  
+#### Instalación de Material UI
+
+Material UI utiliza [Emotion](https://emotion.sh) como su motor de estilo predeterminado. 
+
+Para hacer la instalación por defecto con `emotion`:
+```
+yarn add @mui/material @emotion/react @emotion/styled
+```
+
+Si vamos a utilizar [styled-components](https://styled-components.com):
+```
+yarn add @mui/material @mui/styled-engine-sc styled-components
+```
+
+Es importante que la versión de `react` y `react-dom` esten por encima de la 17.0.0 ya que tiene "peer dependencies". Para confirmar la versión tenemos que mirar `package.json` en la raiz del proyecto.
+
+Actualmente estamos usando la versión 18.3.1
+```
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    ...
+  }
+```
+---
+
+#### Instalación de Roboto (de google fonts), la fuente que usa MUI
+
+En `<head>` del `index.html` cargamos la fuente:
+```
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+/>
+```
+
+#### Instalación iconos de Material UI
+
+
+Para utilizar el componente de icono de fuente o los iconos de material SVG prediseñados, primero debe instalar la fuente de iconos de material. Puede hacerlo con npm o con la CDN de Google Web Fonts.
+
+Se recomienda hacer la instalación de los SVG y NO la fuente, ya que la fuente carga todos los iconos y con SVG vas haciendo `import` solo de los que necesitas:
+```
+yarn add @mui/icons-material
+```
+
 ## APIS USADAS
 - [breakingbadapi](https://breakingbadapi.com)
 ---
@@ -229,6 +283,39 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+
+
+---
+
+# 🖌️ 241. Instalación de Material UI
+
+Hemos instalado:
+> 1. Material UI
+> 2. Fuente de google fonts Roboto, la fuente que usa MUI
+> 3. Iconos de Material UI
+
+
+## 1. Para hacer la instalación por defecto con `emotion`:
+```
+yarn add @mui/material @emotion/react @emotion/styled
+```
+
+## 2. Instalación de Roboto de google fonts, en <head> con los preloads:
+
+```
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+/>
+```
+
+
+## 3. Instalacion de iconos SVG, NO fuente:
+```
+yarn add @mui/icons-material
+```
 
 
 ---
