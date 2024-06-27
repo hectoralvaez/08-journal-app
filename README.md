@@ -220,6 +220,20 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 
 
+---
+
+# 🖌️ 238. Inicio de proyecto - JournalApp
+
+Arrancamos el proyecto eliminando los archivos que no vamos a usar y creamos los nuevos. 
+
+También creamos las nuevas carpetas que necesitaremos:
+- auth
+- journal
+- router
+- theme
+
+---
+
 # 🖌️ 236. Temas puntuales de la sección
 
 ## ¿Qué veremos en esta sección?
@@ -228,6 +242,7 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 - Diferentes componentes de material
 - Uso de funciones propias de MaterialUI
 - Configuración de temas personalizados
+---
 
 
 # 🆕 INICIO SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
