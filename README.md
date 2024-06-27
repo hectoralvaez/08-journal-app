@@ -233,6 +233,15 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 240. Nota importante
+
+En la próxima clase instalaremos los íconos de material, pero al hacerlo, esto incrementa el bundle size y el tiempo de transpilación, tengan presente esto porque hemos recibido bastantes preguntas relacionadas al tema.
+
+
+Más información y posibles acciones aquí: [mui.com - minimizing-bundle-size](https://mui.com/material-ui/guides/minimizing-bundle-size/)
+
+---
+
 # 🖌️ 239. Configuración de Rutas principales y secundarias
 
 En esta clse hemos instalado React Router DOM para poder trabajar las rutas.
