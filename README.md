@@ -294,6 +294,14 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 246. RegisterPage - Diseño
+
+En esta clase simplemente se ha copiado todo el contenido que teníamos en `LoginPage.jsx` y se ha pegado en `RegisterPage.jsx`.
+
+Una vez copiado lo único que se ha tenido que hacer es cambiar el nombre del component de `LoginPage` > `RegisterPage` y adaptar los campos del formulario.
+
+---
+
 # 🖌️ 245. AuthLayout
 
 Creamos el `AuthLayout.jsx` con la estructura de lo que se repetirá en las páginas de "Login" y "Register" con el `children` que será el contenido que cargue dentro del layout y el título que llevará en este caso el formulario:

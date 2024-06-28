@@ -54,5 +54,3 @@ export const LoginPage = () => {
         </AuthLayout>
     );
 };
-
-// Con la propiedad sx (sería algo así como "style extendend") tenemos acceso al tema que tenemos definido con el themeProvider
