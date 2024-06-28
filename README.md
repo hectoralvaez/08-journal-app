@@ -294,6 +294,52 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 245. AuthLayout
+
+Creamos el `AuthLayout.jsx` con la estructura de lo que se repetirá en las páginas de "Login" y "Register" con el `children` que será el contenido que cargue dentro del layout y el título que llevará en este caso el formulario:
+
+```javascript
+export const AuthLayout = ( {children, title=''} ) => {
+...
+
+<Grid>
+    <Grid>
+        <Typography>{ title }</Typography>
+        { children }
+    </Grid>
+</Grid>
+
+```
+
+En el `LoginPage.jsx`
+podremos llamar directamente al layout con la variable title y automáticamente, lo que hay dentro ya es el children que cargará en el `AuthLayout.jsx`
+
+```javascript
+<AuthLayout title="Login">
+    <form>
+    </form>
+</AuthLayout>
+```
+
+## Otras cosas a tener en cuenta de esta clase:
+Para añadir estilos según la media query (en la declaración del `<Grid>`, en este caso) marcamos el ancho que va a tener el elemento siempre teniendo en cuenta que la filosofía es Mobile First, por lo tanto, le decimos que hasta sm, el ancho sea "450px":
+
+```javascript
+<Grid
+    item
+    className="box-shadow"
+    xs={3}
+    sx={{ 
+        width: { sm: 450 },
+        backgroundColor: "white",
+        padding: 3,
+        borderRadius: 2
+    }}
+>
+```
+
+---
+
 # 🖌️ 244. LoginPage - Diseño sin Layout - Segunda Parte
 
 Para usar los links, tenemos que distingir entre el `<Link>` de "MUI" y el de `react-router-dom`
