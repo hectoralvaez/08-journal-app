@@ -294,6 +294,30 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 244. LoginPage - Diseño sin Layout - Segunda Parte
+
+Para usar los links, tenemos que distingir entre el `<Link>` de "MUI" y el de `react-router-dom`
+
+Para evitar conflico entre los imports y el uso de `<Link>`, hay que llamar al de `react-router-dom` con un alias, en este caso `RouterLink`:
+```javascript
+import { Link as RouterLink} from "react-router-dom";
+```
+
+Y podemos hacer el import del de MUI como "Link"
+```javascript
+import { Button, Grid, Link, TextField, Typography } from "@mui/material";
+```
+
+A la hora de construir el `<Link>`, podemos usar por defecto el de MUI, pero asignando al `component` el valor del alias (`RouterLink`) asignado al Link de `react-router-dom`:
+```javascript
+<Link component={ RouterLink } color='inherit' to="/auth/register">
+    Crear una cuenta
+</Link>
+```
+
+
+---
+
 # 🖌️ 243. LoginPage - Diseño sin Layout
 
 En este ejemplo se va a maquetar la página de "login" como pàgina independiente sin tener en cuenta que se podrían usar "layouts" que reutilicen estructuras iguales.
