@@ -294,6 +294,15 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 243. LoginPage - Diseño sin Layout
+
+En este ejemplo se va a maquetar la página de "login" como pàgina independiente sin tener en cuenta que se podrían usar "layouts" que reutilicen estructuras iguales.
+
+Trabajaremos con [`Grid`](https://mui.com/material-ui/react-grid2/) de MUI
+
+
+---
+
 # 🖌️ 242. Configuración de MUI con Vite
 
 
