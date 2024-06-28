@@ -357,6 +357,9 @@ Para aplicarlo finalmente en `JournalApp.jsx` como un Higher-Order Component
 </AppTheme>
 ```
 
+### Otras aplicaciones de MUI (Typography)
+Se ha aplicado `Typography` de MUI a `JournalPage.jsx` con la `variant="h1"` para que se comporte como un `H1`
+
 ---
 
 # 🖌️ 241. Instalación de Material UI
