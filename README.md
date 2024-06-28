@@ -209,8 +209,8 @@ El objeto `screen` de React Testing Library (RTL) proporciona métodos para cons
 
 ---
 
-### Material UI (MUI):  
-#### Instalación de Material UI
+## Material UI (MUI):  
+### Instalación de Material UI
 
 Material UI utiliza [Emotion](https://emotion.sh) como su motor de estilo predeterminado. 
 
@@ -241,7 +241,7 @@ Actualmente estamos usando la versión 18.3.1
 ```
 ---
 
-#### Instalación de Roboto (de google fonts), la fuente que usa MUI
+### Instalación de Roboto (de google fonts), la fuente que usa MUI
 
 En `<head>` del `index.html` cargamos la fuente:
 ```
@@ -253,15 +253,23 @@ En `<head>` del `index.html` cargamos la fuente:
 />
 ```
 
-#### Instalación iconos de Material UI
-
-
+### Instalación iconos de Material UI
 Para utilizar el componente de icono de fuente o los iconos de material SVG prediseñados, primero debe instalar la fuente de iconos de material. Puede hacerlo con npm o con la CDN de Google Web Fonts.
 
 Se recomienda hacer la instalación de los SVG y NO la fuente, ya que la fuente carga todos los iconos y con SVG vas haciendo `import` solo de los que necesitas:
 ```
 yarn add @mui/icons-material
 ```
+
+### EJEMPLO DE Material UI - Vite.js
+
+[Aquí](https://mui.com/material-ui/getting-started/example-projects/) tenemos un listado de las diferentes tecnologías en las que se puede aplicar MUI
+
+Aquí el ejemplo concreto con [Vite.js](https://github.com/mui/material-ui/tree/next/examples/material-ui-vite)
+
+
+[stackblitz del ejemplo](https://stackblitz.com/github/mui/material-ui/tree/next/examples/material-ui-vite)
+
 
 ## APIS USADAS
 - [breakingbadapi](https://breakingbadapi.com)
@@ -271,7 +279,8 @@ yarn add @mui/icons-material
 ### REACT:  
 - Para evitar que, por ejemplo, aparezca duplicado el console.log de la llamada al `useEffect`, eliminar el `<React.StrictMode>` del `main.jsx`.
 
-### GENERIC:  
+### GENERIC:
+
 - Las dev tools de Chrome solo funcionan en desarollo, cuando estamos en producción, no funcionan.
 ### VISUAL STUDIO CODE:  
 - Para crear un Functional Component `rafc`.
@@ -283,7 +292,70 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+---
 
+# 🖌️ 242. Configuración de MUI con Vite
+
+
+> *CssBaseline:*
+> 
+>Material UI proporciona un componente CssBaseline opcional. Corrige algunas inconsistencias entre navegadores y dispositivos y, al mismo tiempo, proporciona restablecimientos que se adaptan mejor a la interfaz de usuario de Material que las hojas de estilo globales alternativas como normalize.css.
+
+Del ejemplo concreto que nos facilita MUI, para trabajar con [Vite.js](https://github.com/mui/material-ui/tree/next/examples/material-ui-vite), ellos lo aplican directamente en el `main.jsx`, pero nosotros crearemos el archivo `AppTheme.jsx` dentro de la carpeta "theme".
+
+## Su ejemplo:
+```javascript
+<ThemeProvider theme={theme}>
+    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+    <CssBaseline />
+    <App />
+</ThemeProvider>
+```
+
+## Nuestra implementación
+### Creación de `purpleTheme`
+Creamos nuestro template en la raiz de "theme" (también creamos el archivo de barril con el tema y el AppTheme)
+
+Para crearlo usamos el `createTheme` de MUI:
+```javascript
+import { createTheme } from "@mui/material";
+import { red } from "@mui/material/colors";
+
+export const purpleTheme = createTheme({
+    palette: {
+      primary: {
+        main: '#262254',
+      },
+      secondary: {
+        main: '#543884',
+      },
+      error: {
+        main: red.A400,
+      },
+    },
+  });
+```
+
+### Implemantación en `AppTheme.jsx`
+Se implementa como un Higher-Order Component aplicando el tema `purpleTheme` creado en la misma carpeta:
+```javascript
+export const AppTheme = ({ children }) => {
+    return (
+        <ThemeProvider theme={ purpleTheme }>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            { children }
+        </ThemeProvider>
+    );
+};
+```
+### Aplicación del HOC `AppTheme.jsx` en `JournalApp.jsx`
+Para aplicarlo finalmente en `JournalApp.jsx` como un Higher-Order Component
+```javascript
+<AppTheme>
+    <AppRouter />
+</AppTheme>
+```
 
 ---
 
