@@ -294,6 +294,14 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 247. JournalLayout y JournalPage
+
+En esta clase creamos el layout de Journal `JournalLayout.jsx` y la aplicamos a `JournalPage.jsx`.
+
+Queda pendiente definir Navbar, Sidebar y Toolbar.
+
+---
+
 # 🖌️ 246. RegisterPage - Diseño
 
 En esta clase simplemente se ha copiado todo el contenido que teníamos en `LoginPage.jsx` y se ha pegado en `RegisterPage.jsx`.
