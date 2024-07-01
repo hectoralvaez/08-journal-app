@@ -294,6 +294,64 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 250. NothingSelectedView - No hay nada seleccionado
+
+Añadimos la carpeta "views", que es el CONTENIDO que carga DENTRO de la página.
+
+
+Ahora mismo tenemos esta jerarquía:
+1. Layout
+2. Page
+3. View
+
+## 1. Layout (JournalLayout)
+Estructura general que contiene todo y donde se llama al `children` que será la página:
+```javascript
+<Box sx={{ display: "flex" }}>
+    <NavBar drawerWidth = { drawerWidth } />
+    <SideBar drawerWidth = { drawerWidth } />
+
+    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Toolbar />
+
+        {children}
+    </Box>
+</Box>
+```
+## 2. Page (JournalPage)
+En la página llamamos el layout y dentro ponemos el `children` que es el propio contenido de la página, en este caso `NothingSelectedView`.
+
+```javascript
+<JournalLayout>
+    <NothingSelectedView />
+</JournalLayout>
+```
+
+## 3. View (NothingSelectedView)
+Aquí generamos el contenido FINAL que aparecerá en el espacio reservado para el contenido principal de la página
+```javascript
+
+<Grid
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justifyContent="center"◊
+    sx={{ minHeight: "calc(100vh - 110px)", backgroundColor: "primary.main", borderRadius: 3 }}
+>
+    <Grid item xs={ 12 }>
+        <StarOutline sx={{ fontSize: 100, color: 'white' }} />
+    </Grid>
+    <Grid item xs={ 12 }>
+        <Typography color='white' variant="h5">Selecciona o crea una entrada</Typography>
+    </Grid>
+</Grid>
+```
+
+
+
+---
+
 # 🖌️ 249. SideBar
 
 Preparamos el SideBar con las listas que proporciona MUI dentro del `Drawer`:
