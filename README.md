@@ -294,6 +294,34 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 248. NavBar
+
+Creamos NavBar en la carpeta "components", pero se podría haber creado tambien en en la carpeta "ui", ya que es algo que va a ser estandard en toda la aplicación cuando estás autenticado.
+
+En NavBar vamos a trabajar con elementos ya creados por MUI como `AppBar` y `Toolbar`
+
+Se van a trabajar estilos en linea con mobile first:
+
+### Ejemplo 1:
+
+Tanto el `width` como el `margin-left` se están aplicando de mobile para arriba:
+```javascript
+sx={{ 
+    width: { sm: `calc(100% - ${drawerWidth}px)`},
+    ml: { sm: `${drawerWidth}px`}
+}}
+```
+
+### Ejemplo 2:
+
+el `display: none`, se aplica de mobile para arriba
+```javascript
+sx={{ mr: 2, display: {sm: 'none'}}}
+```
+
+
+---
+
 # 🖌️ 247. JournalLayout y JournalPage
 
 En esta clase creamos el layout de Journal `JournalLayout.jsx` y la aplicamos a `JournalPage.jsx`.
