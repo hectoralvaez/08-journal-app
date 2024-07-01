@@ -294,6 +294,19 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 249. SideBar
+
+Preparamos el SideBar con las listas que proporciona MUI dentro del `Drawer`:
+
+`List`
+`ListItem`
+`ListItemButton`
+`ListItemIcon`
+`ListItemText`
+
+En este ejemplo, Fernando añade un componente `ToolBar` para salvar el espacio que tiene que dejar el texto que hay en la página. No me parece muy limpio, a no ser que más adelante se le dé una utilidad a ese `ToolBar`
+---
+
 # 🖌️ 248. NavBar
 
 Creamos NavBar en la carpeta "components", pero se podría haber creado tambien en en la carpeta "ui", ya que es algo que va a ser estandard en toda la aplicación cuando estás autenticado.
