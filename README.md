@@ -294,6 +294,14 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 251. NoteView
+
+Preparamos otra vista, la `NoteView`, que nos permitirá añadir nuevas notas.
+
+Así que en `JournalPage` llamamos a la vista `NoteView` en lugar de la `NothingSelectedView`
+
+---
+
 # 🖌️ 250. NothingSelectedView - No hay nada seleccionado
 
 Añadimos la carpeta "views", que es el CONTENIDO que carga DENTRO de la página.
