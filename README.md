@@ -33,21 +33,19 @@ Para ejecutar la aplicación:
 
 ## ARRANCAR GIT  
 
-En terminal:  
-`git init`
+### En github.com:
 
-En github.com:
+Creamos el nuevo repositorio con el nombre que deseamos, por ejemplo `09-toolkit-redux`.
 
-Creamos el nuevo repositorio con el nombre que deseamos.
-
-En Visual Studio Code, hacemos un commit con todo el contenido que tenemos para que se pueda publicar la rama (o desde el terminal, hacemos un `git add .` y un `git commit -m "Primer commmit"`)
-
-Una vez activa la rama, volvemos al terminal del proyecto y ejecutamos estas tres lineas (se puden lanzar de golpe):
+### En terminal:  
 
 ```
-git remote add origin https://github.com/hectoralvaez/07-heroes-spa.git
+git init
+git add README.md
+git commit -m "first commit"
 git branch -M main
-git push -u origin main
+git remote add origin https://github.com/hectoralvaez/09-toolkit-redux.git
+git push -u origin main`
 ```
 
 ## ARRANCAR REACT ROUTER DOM
