@@ -295,6 +295,68 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+
+# ⚙️ 257. Explicación visual del patrón Redux
+
+## ¿Qué es Redux? (by ChatGpt)
+
+Redux es una librería de JavaScript que se utiliza para manejar el estado de aplicaciones. Fue creada por Dan Abramov y Andrew Clark en 2015 y se basa en el concepto de un almacén centralizado para el estado de toda la aplicación, lo que facilita la gestión del estado de una manera predecible y estructurada.
+
+### Principios Clave de Redux
+
+1. **Un único almacén de estado (single source of truth)**:
+   Todo el estado de la aplicación se almacena en un solo objeto JavaScript, conocido como el "store". Esto facilita el seguimiento de los cambios en el estado y la depuración de la aplicación.
+
+2. **El estado es de solo lectura**:
+   La única forma de cambiar el estado es emitir una acción, un objeto que describe lo que sucedió. Esto asegura que las mutaciones sean predecibles y rastreables.
+
+3. **Cambios en el estado utilizando funciones puras**:
+   Para especificar cómo cambia el estado en respuesta a una acción, se utilizan reductores (reducers), que son funciones puras que toman el estado anterior y una acción y devuelven el nuevo estado.
+
+### Componentes Principales de Redux
+
+- **Store**: El almacén que contiene el estado de la aplicación.
+- **Actions**: Objetos que describen un cambio en el estado. Deben tener al menos una propiedad `type` que indica el tipo de acción a realizar.
+- **Reducers**: Funciones puras que toman el estado actual y una acción y devuelven un nuevo estado.
+- **Middleware**: Funciones que se ejecutan entre el envío de una acción y el momento en que esta llega al reductor, permitiendo manipular o inspeccionar acciones y el estado.
+
+### Uso de Redux
+Redux se puede usar con cualquier librería de interfaz de usuario, pero es comúnmente utilizado con React a través de la integración con `react-redux`. Esto permite que los componentes de React se conecten al estado de Redux y reciban actualizaciones automáticas cuando el estado cambia.
+
+## Ejemplo de Uso
+
+1. **Definir acciones**:
+   ```javascript
+   const increment = () => ({ type: 'INCREMENT' });
+   const decrement = () => ({ type: 'DECREMENT' });
+   ```
+2. **Crear un reductor**:
+   ```javascript
+    const counter = (state = 0, action) => {
+    switch (action.type) {
+        case 'INCREMENT':
+        return state + 1;
+        case 'DECREMENT':
+        return state - 1;
+        default:
+        return state;
+    }
+    };
+   ```
+3. **Crear el store**:
+   ```javascript
+    import { createStore } from 'redux';
+    const store = createStore(counter);
+   ```
+
+4. **Enviar acciones**:
+   ```javascript
+    store.dispatch(increment());
+    store.dispatch(decrement());
+   ```
+
+Redux es una herramienta poderosa para aplicaciones que requieren un manejo complejo del estado, como aplicaciones de una sola página (SPA) y aplicaciones que manejan muchos datos interactivos.
+
 # ⚙️ 256. Temas puntuales de la sección
 
 ## ¿Qué veremos en esta sección?
