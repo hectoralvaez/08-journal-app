@@ -295,6 +295,71 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+---
+
+# ⚙️ 258. Redux, React Redux y RTK Query
+
+Entender la diferencia entre Redux, React Redux, React Toolkit y RTK Query puede ayudarte a escoger la herramienta adecuada para manejar el estado en tus aplicaciones de React. Aquí tienes una descripción de cada uno:
+
+## 1. Redux
+
+Redux es una biblioteca para manejar el estado de la aplicación. Está basada en el concepto de un almacenamiento centralizado donde todo el estado de la aplicación es almacenado en un único objeto. Los principales conceptos de Redux son:
+
+- Store: El almacén central que contiene el estado de la aplicación.
+- Actions: Objetos que describen un cambio en el estado.
+- Reducers: Funciones puras que toman el estado actual y una acción y devuelven un nuevo estado.
+- Dispatch: Método para enviar una acción al store.
+
+Redux es independiente de cualquier librería de UI, incluyendo React.
+
+## 2. React Redux
+
+React Redux es la biblioteca oficial para conectar Redux con React. Proporciona un conjunto de componentes y funciones que facilitan la integración de Redux en una aplicación React:
+
+- Provider: Un componente de React que hace que el store de Redux esté disponible para todos los componentes de la aplicación.
+- connect: Una función de orden superior que conecta un componente de React a la store de Redux.
+- Hooks: Como `useSelector` y `useDispatch`, que permiten acceder y manipular el estado de Redux de una manera más sencilla dentro de componentes funcionales.
+
+## 3. Redux Toolkit (RTK)
+Redux Toolkit (RTK) es un conjunto de herramientas oficiales para simplificar el uso de Redux. Está diseñado para hacer que Redux sea más fácil de usar y reduce la cantidad de código que los desarrolladores necesitan escribir. RTK incluye:
+
+- configureStore: Una función para configurar el store con buenas prácticas y configuraciones predeterminadas.
+- createSlice: Una función que combina la definición de acciones y reducers en un solo lugar.
+- createAsyncThunk: Una utilidad para manejar acciones asíncronas.
+- createReducer y createAction: Funciones para definir reducers y acciones de manera más sencilla.
+
+RTK es una forma recomendada de usar Redux en nuevas aplicaciones, ya que simplifica muchas de las tareas comunes.
+
+## 4. RTK Query
+RTK Query es una biblioteca incluida en Redux Toolkit que facilita la obtención de datos y el almacenamiento en caché de esos datos. Proporciona herramientas para hacer peticiones a API de manera eficiente y manejar el estado del lado del cliente relacionado con la obtención de datos. Sus principales características son:
+
+- createApi: Una función para definir un servicio de API.
+- endpoints: Métodos para describir operaciones de consulta (GET) y mutación (POST, PUT, DELETE).
+- caching: Gestión automática de la caché para mejorar el rendimiento de las solicitudes a la API.
+- optimistic updates: Soporte para actualizaciones optimistas, lo que permite que la UI refleje los cambios inmediatos mientras la solicitud está en proceso.
+
+RTK Query se integra perfectamente con Redux y es una solución poderosa para manejar datos asíncronos en aplicaciones React.
+
+## Resumen
+- Redux: Biblioteca para el manejo del estado con un almacenamiento centralizado.
+- React Redux: Conector oficial entre Redux y React.
+- Redux Toolkit (RTK): Conjunto de herramientas para simplificar el uso de Redux.
+- RTK Query: Biblioteca para manejar la obtención de datos y el almacenamiento en caché, incluida en RTK.
+
+Cada una de estas herramientas se construye sobre la anterior, proporcionando niveles adicionales de abstracción y funcionalidad para facilitar el desarrollo con Redux y React.
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 # ⚙️ 257. Explicación visual del patrón Redux
 
