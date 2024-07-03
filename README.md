@@ -297,6 +297,42 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 ---
 
+# 🖌️ 253. Boton Flotante
+
+Añadimos el botón flotante con `IconButton` de MUI:
+
+```javascript
+<IconButton
+    size='large'
+    sx={{
+        color: 'white',
+        backgroundColor: 'error.main',
+        ':hover': { backgroundColor: 'error.main', opacity: .9 },
+        position: 'fixed',
+        right: 30,
+        bottom: 30,
+    }}
+>
+```
+
+Puntos interesantes:
+1. Cuando hacemos estilos con `sx`, tenemos acceso a los colores del theme, en este caso `error.main`, si usaramos `style`, no tendíamos acceso.
+
+2. Dentro de `sx` podemos hacer como si fuera sass y anidar elementos.
+
+Marcamos el elemento anidado entre `''`, añadimos dos puntos `:` y a continuación un objeto con las propiedades separadas por comas:
+```javascript
+':hover': { backgroundColor: 'error.main', opacity: .9 },
+```
+
+
+
+
+
+
+
+---
+
 # 🖌️ 252. ImageList - Galería de imágenes
 
 Añadimos la galería de [imágenes de MUI](https://mui.com/material-ui/react-image-list/).
