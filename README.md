@@ -79,12 +79,15 @@ En terminal: `yarn add --dev @testing-library/react @types/jest jest-environment
 - [Vite](https://vitejs.dev/): La alternativa a [Create React App (CRA)](https://create-react-app.dev/), es más ligero
 - [Use Vite for React Apps instead of CRA](https://dev.to/nilanth/use-vite-for-react-apps-instead-of-cra-3pkg)
 - [React Hook Form](https://react-hook-form.com/): Librería que te ayuda a validar formularios en React. Es una librería mínima sin otras dependencias, a la vez que es eficiente y fácil de usar, lo que requiere que los desarrolladores escriban menos líneas de código que otras librerías de formularios.
-- ['React Router'](https://reactrouter.com): Biblioteca de enrutamiento con la que puedes definir diferentes rutas dentro de tu aplicación y asignar componentes específicos a cada ruta. Cuando el usuario navega a una ruta determinada, React Router se encarga de renderizar el componente correspondiente en el lugar adecuado de la interfaz de usuario. Es esencial para construir aplicaciones de una sola página (SPA) con múltiples rutas y vistas en React, ya que facilita el enrutamiento y la navegación entre componentes de manera eficiente y estructurada.
+- [React Router](https://reactrouter.com): Biblioteca de enrutamiento con la que puedes definir diferentes rutas dentro de tu aplicación y asignar componentes específicos a cada ruta. Cuando el usuario navega a una ruta determinada, React Router se encarga de renderizar el componente correspondiente en el lugar adecuado de la interfaz de usuario. Es esencial para construir aplicaciones de una sola página (SPA) con múltiples rutas y vistas en React, ya que facilita el enrutamiento y la navegación entre componentes de manera eficiente y estructurada.
 
-- ['React Router (useNavigate)'](https://reactrouter.com/en/main/hooks/use-navigate): Este hook nos devuelve la función 'navigate', que nos permite hacer redirecciones programáticas. Con esta función, podemos hacer lo mismo que con el componente navigate. Es decir, redirigir una URL al resultado de otra ruta.
+- [React Router (useNavigate)](https://reactrouter.com/en/main/hooks/use-navigate): Este hook nos devuelve la función 'navigate', que nos permite hacer redirecciones programáticas. Con esta función, podemos hacer lo mismo que con el componente navigate. Es decir, redirigir una URL al resultado de otra ruta.
 
   La diferencia entre el hook useNavigate y el componente navigate en React Router es que, con el uso del hook, podemos utilizar una función. Esto implica que podemos utilizarlo en cualquier parte del código. El problema de utilizar componentes en vez de funciones es que debemos renderizarlos. Ya que una función no necesita este proceso de render, podemos insertarla donde queramos.
 
+- [Material UI components](https://mui.com/material-ui/all-components/)
+
+    Material UI tiene como objetivo proporcionar elementos básicos para que los desarrolladores creen excelentes interfaces de usuario utilizando las pautas de Material Design como referencia.
 
 - PETICIONES HTTP 
     - [Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch) Viene en JavaScript
@@ -291,6 +294,25 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 ```javascript
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
+
+---
+
+# 🖌️ 252. ImageList - Galería de imágenes
+
+Añadimos la galería de [imágenes de MUI](https://mui.com/material-ui/react-image-list/).
+
+Yo instalo la versión `MasonryImageList`, pero la adapto a nuestro `ImageGallery` con una función de flecha de la siguiente manera:
+
+```javascript
+// MUI
+export default function MasonryImageList() {
+...
+
+// PROYECTO
+export const ImageGallery = () => {
+...
+```
+
 
 ---
 
