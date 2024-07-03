@@ -89,6 +89,11 @@ En terminal: `yarn add --dev @testing-library/react @types/jest jest-environment
 
     Material UI tiene como objetivo proporcionar elementos básicos para que los desarrolladores creen excelentes interfaces de usuario utilizando las pautas de Material Design como referencia.
 
+- [Redux](https://redux.js.org): Biblioteca para el manejo del estado con un almacenamiento centralizado.
+- [React Redux](https://react-redux.js.org): Conector oficial entre Redux y React.
+- [Redux Toolkit (RTK)](https://redux-toolkit.js.org): Conjunto de herramientas para simplificar el uso de Redux.
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview): Biblioteca para manejar la obtención de datos y el almacenamiento en caché, incluida en RTK.
+
 - PETICIONES HTTP 
     - [Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch) Viene en JavaScript
     - [Axios](https://axios-http.com) Fernando lo prefiere a Fetch
