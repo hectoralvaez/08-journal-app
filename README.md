@@ -295,6 +295,29 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+# ⚙️ 256. Temas puntuales de la sección
+
+## ¿Qué veremos en esta sección?
+
+- Redux
+- Store
+- Middlewares
+- Dispatch
+- Actions
+- State
+- Acciones asíncronas
+- RTK Query
+- Redux Toolkit
+- Slices
+
+Es una sección sumamente pequeña, pero quiero darles una explicación teórica sobre Redux antes de entrar en él, pero la ventaja es que para estas alturas, ya deberíamos de saber sobre el Reducer, el cual es el corazón del Redux, por consecuencia aprender Redux en este instante debería ser más fácil!
+
+# 🆕 INICIO SECCIÓN 18: Redux - ¿Qué es y conceptos? + React Redux
+
+<br />
+
+# 🏁 FIN SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
+
 ---
 
 # 🖌️ 253. Boton Flotante
@@ -324,12 +347,6 @@ Marcamos el elemento anidado entre `''`, añadimos dos puntos `:` y a continuaci
 ```javascript
 ':hover': { backgroundColor: 'error.main', opacity: .9 },
 ```
-
-
-
-
-
-
 
 ---
 
