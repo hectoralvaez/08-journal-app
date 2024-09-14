@@ -57,11 +57,22 @@ yarn add react-router-dom@6
 
 ## ARRANCAR 'REACT REDUX' Y 'REDUX TOOLKIT (RTK)'
 
-Para hacerlo con yarn (NO npm) y trabajando con Vite (NO Create React App) 
+### Para hacerlo con yarn (NO npm) y trabajando con Vite (NO Create React App) 
 ```
 yarn add @reduxjs/toolkit react-redux
 ```
 ---
+
+### Iniciar "store" (src/store/store.js):
+```javascript
+import { configureStore } from '@reduxjs/toolkit'
+
+export const store = configureStore({
+  reducer: {
+
+  },
+})
+```
 
 
 > ### NOTA IMPORTANTE:
@@ -355,6 +366,30 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 <br />
 
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+
+---
+## 📝 ⚙️ 275. Configurando Redux en nuestra aplicación
+
+1. Instalación de `@reduxjs/toolkit` [`yarn add @reduxjs/toolkit react-redux`]
+
+2. Arrancar el store: (`src/store/store.js`)
+```javascript
+import { configureStore } from '@reduxjs/toolkit'
+
+export const store = configureStore({
+  reducer: {
+
+  },
+})
+```
+
+3. Añadir provider a `main.jsx`
+```javascript
+<Provider store={ store }>
+    ...
+</Provider>
+```
+---
 
 ## 📝 ⚙️ 273. Temas puntuales de la sección
 
