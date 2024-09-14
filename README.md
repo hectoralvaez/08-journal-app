@@ -352,6 +352,29 @@ Cuando estamos trabajando un código, pero todavía no se ha terminado, para evi
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+<br />
+
+# 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+
+## 📝 ⚙️ 273. Temas puntuales de la sección
+
+### ¿Qué veremos en esta sección?
+
+- Redux aplicado en nuestro proyecto
+- Firebase
+- FireStore
+- Redux Devtools
+- Thunk
+- Formularios
+- Google SingIn
+- Acciones Asíncronas
+- Mantener el estado de la autenticación
+
+En esta sección configuraremos Redux en nuestro proyecto por primera vez, aplicado al inicio en la parte de la autenticación y mantener el estado de la misma a lo largo de toda la aplicación.
+
+
+# 🆕 INICIO SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+
 ---
 # 🏁 FIN SECCIÓN 18: Redux - ¿Qué es y conceptos? + React Redux
 
@@ -868,7 +891,7 @@ Es una sección sumamente pequeña, pero quiero darles una explicación teórica
 
 ---
 
-## 🖌️ 253. Boton Flotante
+## 📝 🖌️ 253. Boton Flotante
 
 Añadimos el botón flotante con `IconButton` de MUI:
 
@@ -898,7 +921,7 @@ Marcamos el elemento anidado entre `''`, añadimos dos puntos `:` y a continuaci
 
 ---
 
-## 🖌️ 252. ImageList - Galería de imágenes
+## 📝 🖌️ 252. ImageList - Galería de imágenes
 
 Añadimos la galería de [imágenes de MUI](https://mui.com/material-ui/react-image-list/).
 
@@ -917,7 +940,7 @@ export const ImageGallery = () => {
 
 ---
 
-## 🖌️ 251. NoteView
+## 📝 🖌️ 251. NoteView
 
 Preparamos otra vista, la `NoteView`, que nos permitirá añadir nuevas notas.
 
@@ -925,7 +948,7 @@ Así que en `JournalPage` llamamos a la vista `NoteView` en lugar de la `Nothing
 
 ---
 
-## 🖌️ 250. NothingSelectedView - No hay nada seleccionado
+## 📝 🖌️ 250. NothingSelectedView - No hay nada seleccionado
 
 Añadimos la carpeta "views", que es el CONTENIDO que carga DENTRO de la página.
 
@@ -983,7 +1006,7 @@ Aquí generamos el contenido FINAL que aparecerá en el espacio reservado para e
 
 ---
 
-## 🖌️ 249. SideBar
+## 📝 🖌️ 249. SideBar
 
 Preparamos el SideBar con las listas que proporciona MUI dentro del `Drawer`:
 
@@ -996,7 +1019,7 @@ Preparamos el SideBar con las listas que proporciona MUI dentro del `Drawer`:
 En este ejemplo, Fernando añade un componente `ToolBar` para salvar el espacio que tiene que dejar el texto que hay en la página. No me parece muy limpio, a no ser que más adelante se le dé una utilidad a ese `ToolBar`
 ---
 
-## 🖌️ 248. NavBar
+## 📝 🖌️ 248. NavBar
 
 Creamos NavBar en la carpeta "components", pero se podría haber creado tambien en en la carpeta "ui", ya que es algo que va a ser estandard en toda la aplicación cuando estás autenticado.
 
@@ -1024,7 +1047,7 @@ sx={{ mr: 2, display: {sm: 'none'}}}
 
 ---
 
-## 🖌️ 247. JournalLayout y JournalPage
+## 📝 🖌️ 247. JournalLayout y JournalPage
 
 En esta clase creamos el layout de Journal `JournalLayout.jsx` y la aplicamos a `JournalPage.jsx`.
 
@@ -1032,7 +1055,7 @@ Queda pendiente definir Navbar, Sidebar y Toolbar.
 
 ---
 
-## 🖌️ 246. RegisterPage - Diseño
+## 📝 🖌️ 246. RegisterPage - Diseño
 
 En esta clase simplemente se ha copiado todo el contenido que teníamos en `LoginPage.jsx` y se ha pegado en `RegisterPage.jsx`.
 
@@ -1040,7 +1063,7 @@ Una vez copiado lo único que se ha tenido que hacer es cambiar el nombre del co
 
 ---
 
-## 🖌️ 245. AuthLayout
+## 📝 🖌️ 245. AuthLayout
 
 Creamos el `AuthLayout.jsx` con la estructura de lo que se repetirá en las páginas de "Login" y "Register" con el `children` que será el contenido que cargue dentro del layout y el título que llevará en este caso el formulario:
 
@@ -1086,7 +1109,7 @@ Para añadir estilos según la media query (en la declaración del `<Grid>`, en 
 
 ---
 
-## 🖌️ 244. LoginPage - Diseño sin Layout - Segunda Parte
+## 📝 🖌️ 244. LoginPage - Diseño sin Layout - Segunda Parte
 
 Para usar los links, tenemos que distingir entre el `<Link>` de "MUI" y el de `react-router-dom`
 
@@ -1110,7 +1133,7 @@ A la hora de construir el `<Link>`, podemos usar por defecto el de MUI, pero asi
 
 ---
 
-## 🖌️ 243. LoginPage - Diseño sin Layout
+## 📝 🖌️ 243. LoginPage - Diseño sin Layout
 
 En este ejemplo se va a maquetar la página de "login" como pàgina independiente sin tener en cuenta que se podrían usar "layouts" que reutilicen estructuras iguales.
 
@@ -1119,7 +1142,7 @@ Trabajaremos con [`Grid`](https://mui.com/material-ui/react-grid2/) de MUI
 
 ---
 
-## 🖌️ 242. Configuración de MUI con Vite
+## 📝 🖌️ 242. Configuración de MUI con Vite
 
 
 > *CssBaseline:*
@@ -1187,7 +1210,7 @@ Se ha aplicado `Typography` de MUI a `JournalPage.jsx` con la `variant="h1"` par
 
 ---
 
-## 🖌️ 241. Instalación de Material UI
+## 📝 🖌️ 241. Instalación de Material UI
 
 Hemos instalado:
 > 1. Material UI
@@ -1220,7 +1243,7 @@ yarn add @mui/icons-material
 
 ---
 
-## 🖌️ 240. Nota importante
+## 📝 🖌️ 240. Nota importante
 
 En la próxima clase instalaremos los íconos de material, pero al hacerlo, esto incrementa el bundle size y el tiempo de transpilación, tengan presente esto porque hemos recibido bastantes preguntas relacionadas al tema.
 
@@ -1229,7 +1252,7 @@ Más información y posibles acciones aquí: [mui.com - minimizing-bundle-size](
 
 ---
 
-## 🖌️ 239. Configuración de Rutas principales y secundarias
+## 📝 🖌️ 239. Configuración de Rutas principales y secundarias
 
 En esta clse hemos instalado React Router DOM para poder trabajar las rutas.
 
@@ -1333,7 +1356,7 @@ Este `BrowserRouter` se podría haber puesto en `JournalApp.jsx` y funciona perf
 
 ---
 
-## 🖌️ 238. Inicio de proyecto - JournalApp
+## 📝 🖌️ 238. Inicio de proyecto - JournalApp
 
 Arrancamos el proyecto eliminando los archivos que no vamos a usar y creamos los nuevos. 
 
@@ -1345,7 +1368,7 @@ También creamos las nuevas carpetas que necesitaremos:
 
 ---
 
-## 🖌️ 236. Temas puntuales de la sección
+## 📝 🖌️ 236. Temas puntuales de la sección
 
 ### ¿Qué veremos en esta sección?
 
