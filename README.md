@@ -368,6 +368,54 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 276. Configurar el AuthSlice
+
+Se crea el `authSlice.js` (`src/store/auth/authSlice.js`) usando el snippet `redux-slice` 
+
+```javascript
+import { createSlice } from '@reduxjs/toolkit';
+
+export const authSlice = createSlice({
+    name: 'auth',
+    initialState: {
+        status: 'checking', // 'not-authenticated', 'authenticated' 
+        uid: null,
+        email: null,
+        displayName: null,
+        photoURL: null,
+        errorMessage: null,
+    },
+    reducers: {
+        login: (state, action ) => {
+
+        },
+        logout: (state, payload ) => {
+
+        },
+        checkingCredentials: (state) => {
+
+        }
+    }
+});
+
+// Action creators are generated for each case reducer function
+export const { login, logout, checkingCredentials } = authSlice.actions;
+```
+
+Se añade en el store el nuevo 'slice' en los 'reducer':
+
+```javascript
+export const store = configureStore({
+  reducer: {
+    auth: authSlice.reducer,
+  },
+})
+```
+
+
+
+
+---
 ## 📝 ⚙️ 275. Configurando Redux en nuestra aplicación
 
 1. Instalación de `@reduxjs/toolkit` [`yarn add @reduxjs/toolkit react-redux`]
