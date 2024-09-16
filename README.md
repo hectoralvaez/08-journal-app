@@ -368,6 +368,14 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 277. Manejo del formulario de login
+
+En esta clase se ha creado el hook `useForm.js` importado directamente del repositorio de Fernando, guardado anteriormente en nuestro repositorio también.
+
+Se inicia el control de los estados del formulario con `useDispatch` y las acciones vinculadas a los botones de acción.
+
+---
+
 ## 📝 ⚙️ 276. Configurar el AuthSlice
 
 Se crea el `authSlice.js` (`src/store/auth/authSlice.js`) usando el snippet `redux-slice` 
