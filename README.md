@@ -374,6 +374,55 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 279. Google SignIn - Firebase
+
+Se crea el "provider" de firebase en `(src/firebase/providers.js)` que nos va a dar toda la información de la comunicación con Firebase a partir de `signInWithGoogle`:
+
+```javascript
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FirebaseAuth } from "./config";
+
+const googleProvider = new GoogleAuthProvider();
+
+export const signInWithGoogle = async() => {
+
+    try {
+        const result = await signInWithPopup( FirebaseAuth, googleProvider );
+        // const credentials = GoogleAuthProvider.credentialFromResult(result);
+        const { displayNAme, email, photoURL, uid } = result.user;
+
+        return {
+            ok: true,
+            // User info
+            displayNAme, email, photoURL, uid
+        }
+    }
+
+    catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        return {
+            ok: false,
+            errorMessage,
+
+        }
+    }
+}
+```
+
+Se importa al `src/store/auth/thunks.js` el nuevo provider `signInWithGoogle` para poder gestionar los datos obtenidos
+
+```javascript
+import { signInWithGoogle } from "../../firebase/providers";
+
+....
+
+const result = await signInWithGoogle()
+console.log({result});
+```
+
+---
 ## ⭐ 📝 ⚙️ 278. Configuración inicial de Firebase
 
 Arrancar un proyecto en Firebase
