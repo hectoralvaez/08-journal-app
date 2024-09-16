@@ -374,6 +374,58 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 280. Disparar acción de autenticación
+
+En `src/store/auth/authSlice.js` se añade el state de cada reducer (`login`, `logout`):
+
+```javascript
+    reducers: {
+        login: (state, { payload } ) => {
+            state.status = 'authenticated'; // 'checking', 'not-authenticated', 'authenticated'
+            state.uid = payload.uid;
+            state.email = payload.email;
+            state.displayName = payload.displayName;
+            state.photoURL = payload.photoURL;
+            state.errorMessage = null;
+        },
+        logout: (state, { payload } ) => {
+            state.status = 'not-authenticated'; // 'checking', 'not-authenticated', 'authenticated'
+            state.uid = null;
+            state.email = null;
+            state.displayName = null;
+            state.photoURL = null;
+            state.errorMessage = payload.errorMessage;
+        },
+        checkingCredentials: (state) => {
+            state.status = 'checking';
+        }
+    }
+```
+
+En el `thunk` (`src/store/auth/thunks.js`) se añaden los `dispatch` que devuelve `startGoogleSignIn`
+
+```javascript
+// Si NO es OK, devuelve el logout con el mensaje de error:
+if ( !result.ok ) return dispatch( logout( result.errorMessage ) );
+
+// Si ES OK, devuelve el login con toda la info en el resultado:
+dispatch( login( result ) );
+
+```
+
+En el LoginPage.jsx se añade el control para ver si tienen que estar desactivadoslos botones.
+
+```javascript
+const { status } = useSelector( state => state.auth );
+...
+const isAuthenticating = useMemo( () => status === 'checking', [status]);
+...
+<Button disabled={ isAuthenticating }>
+```
+
+
+
+---
 ## 📝 ⚙️ 279. Google SignIn - Firebase
 
 Se crea el "provider" de firebase en `(src/firebase/providers.js)` que nos va a dar toda la información de la comunicación con Firebase a partir de `signInWithGoogle`:
