@@ -11,7 +11,7 @@ Netlify: https://festivaldegifs.netlify.app
 GitHub: https://github.com/hectoralvaez/festival-de-gifs  
 GitHub Pages: https://hectoralvaez.github.io/festival-de-gifs/  
 
-React, Vite, GitHub, Jest, React Testing Library, Netlify, GitHub Pages, Postman
+React, Vite, GitHub, Jest, React Testing Library, Netlify, GitHub Pages, Postman, Firebase
 
 ---
 
@@ -124,6 +124,12 @@ Este es un proyecto de código abierto. Consulte el repositorio oficial para obt
 - PETICIONES HTTP 
     - [Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch) Viene en JavaScript
     - [Axios](https://axios-http.com) Fernando lo prefiere a Fetch
+
+
+## HERRAMIENTAS
+### [Firebase](https://console.firebase.google.com)
+Plataforma de desarrollo de aplicaciones creada por Google que proporciona una variedad de herramientas y servicios diseñados para ayudar a los desarrolladores a construir, mejorar y escalar aplicaciones móviles y web de manera eficiente. Es particularmente popular debido a su integración con aplicaciones en tiempo real, su facilidad de uso y la variedad de productos que ofrece sin la necesidad de manejar servidores complejos.
+
 ---
 
 # TESTS
@@ -366,6 +372,12 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 <br />
 
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+
+---
+## ⭐ 📝 ⚙️ 278. Configuración inicial de Firebase
+
+Arrancar un proyecto en Firebase
+
 
 ---
 ## 📝 ⚙️ 277. Manejo del formulario de login
