@@ -2,11 +2,26 @@ import { Link as RouterLink} from "react-router-dom";
 
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hoks";
+
+const formData = {
+    displayName: 'Héctor Apellidos',
+    email: 'hector@gmail.com',
+    password: '123456',
+}
 
 export const RegisterPage = () => {
+
+    const { displayName, email, password, onInputChange, formState }  = useForm( formData );
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        console.log( formState );
+    }
+
     return (
         <AuthLayout title="Crear cuenta">
-            <form>
+            <form onSubmit={ onSubmit }>
                 <Grid container sx={{ gap: 2 }}>
 
                     <Grid item xs={ 12 } >
@@ -15,6 +30,9 @@ export const RegisterPage = () => {
                             type="text"
                             placeholder="Fernando Herrera"
                             fullWidth
+                            name="displayName"
+                            value={ displayName }
+                            onChange={ onInputChange }
                         />
                     </Grid>
 
@@ -24,6 +42,9 @@ export const RegisterPage = () => {
                             type="email"
                             placeholder="correo@gmail.com"
                             fullWidth
+                            name="email"
+                            value={ email }
+                            onChange={ onInputChange }
                         />
                     </Grid>
 
@@ -33,12 +54,15 @@ export const RegisterPage = () => {
                             type="password"
                             placeholder="Contraseña"
                             fullWidth
+                            name="password"
+                            value={ password }
+                            onChange={ onInputChange }
                         />
                     </Grid>
 
                     <Grid container spacing={ 2 } sx={{ mb: 2 }}>
                         <Grid item xs={ 12 }>
-                            <Button variant="contained" fullWidth>
+                            <Button variant="contained" type="submit" fullWidth>
                                 Crear cuenta
                             </Button>
                         </Grid>

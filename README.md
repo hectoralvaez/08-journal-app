@@ -374,6 +374,59 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 281. Formulario de registro de usuarios
+
+En `RegisterPage.jsx`, se aplica el hook que hemos creado nosotros (`useForm`) tal y como se ha hecho anteriormente en `LoginPage.jsx`
+
+Se crea el estado inicial de la 'data' del form:
+
+```javascript
+const formData = {
+    displayName: 'Héctor Apellidos',
+    email: 'hector@gmail.com',
+    password: '123456',
+}
+```
+
+Se llama `useForm` con la data generada.
+
+```javascript
+const { displayName, email, password, onInputChange, formState }  = useForm( formData );
+```
+
+Se crea la función onSubmit
+```javascript
+const onSubmit = ( event ) => {
+    event.preventDefault();
+    console.log( formState );
+}
+```
+
+ Se aplica `onSubmit` al form.
+```javascript
+<form onSubmit={ onSubmit }>
+```
+
+Se añaden los valores `name`, `value` y `onChange` a los imputs.
+
+Ejemplo del input "Nombre completo":
+```javascript
+
+<TextField
+    label="Nombre completo"
+    type="text"
+    placeholder="Fernando Herrera"
+    fullWidth
+    name="displayName"
+    value={ displayName }
+    onChange={ onInputChange }
+/>
+```
+
+
+
+
+---
 ## 📝 ⚙️ 280. Disparar acción de autenticación
 
 En `src/store/auth/authSlice.js` se añade el state de cada reducer (`login`, `logout`):
