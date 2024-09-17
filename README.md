@@ -1,3 +1,23 @@
+### Emojis
+
+🆕 Inicio Sección
+
+📝 App Journal
+🚀 App Heroes
+
+⚙️ Redux
+🪝 Hooks
+
+🚧 🔬 Pruebas
+
+⭐ Clase interesante
+💩 Clase muy pesada 
+
+🖌️ Diseño
+💾 Instalación y configuracion
+🔒 Seguridad rutas
+
+🏁 Fin Sección 
 ### URLS DEL PROYECTO:  
 
 #### Heroes SPA:  
@@ -373,6 +393,47 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
+---
+## 📝 ⚙️ 284. Mostrar errores en pantalla
+
+En `src/hoks/useForm.js`, se añade la constante `isFormValid` que recorre el array `formValidations` para comprobar que ningún campo da error.
+ 
+```javascript
+const isFormValid = useMemo( () => {
+
+    for (const formValue of Object.keys( formValidation )) {
+        if ( formValidation[formValue] !== null ) return false;
+    }
+
+    return true;
+}, [ formState ]);
+```
+
+En `src/auth/pages/RegisterPage.jsx` declaramos `formSubmited` mediante `useState`, con valor "false".
+
+```javascript
+const [formSubmited, setformSubmited] = useState(false);
+```
+
+Cambiaremos el valor a "true" en el momento de hacer el envío del formulario:
+
+```javascript
+const onSubmit = ( event ) => {
+    event.preventDefault();
+    setformSubmited(true);  // Cambio de estado a TRUE
+    console.log( formState );
+}
+```
+
+Se añade también el formato de error y el texto que va a devolver el input (son funcionalidades del `TextField` de mui):
+
+```javascript
+<TextField
+    ...
+    error={ !!displayNameValid && formSubmited }
+    helperText={ displayNameValid }
+/>
+```
 ---
 ## 💩 📝 ⚙️ 283. Validar desde nuestro custom hook (Muy densa!)
 Validar desde nuestro custom hook de forma dinámica los errores y mensajes que se van a lanzar en el form. 
