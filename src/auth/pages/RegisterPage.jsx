@@ -6,9 +6,9 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hoks";
 
 const formData = {
-    displayName: 'Héctor Apellidos',
-    email: 'hector@gmail.com',
-    password: '123456',
+    displayName: '',
+    email: '',
+    password: '',
 }
 
 const formValidations = {
@@ -21,13 +21,13 @@ export const RegisterPage = () => {
 
     const [formSubmited, setformSubmited] = useState(false);
 
-    const { displayName, email, password, onInputChange, formState, displayNameValid, emailValid, passwordValid } = useForm( formData, formValidations );
-
-    console.log( displayNameValid );
+    const { displayName, email, password, onInputChange, formState, isFormValid, displayNameValid, emailValid, passwordValid } = useForm( formData, formValidations );
 
     const onSubmit = ( event ) => {
         event.preventDefault();
         setformSubmited(true);
+        if (!isFormValid ) return;
+
         console.log( formState );
     }
 
