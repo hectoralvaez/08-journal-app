@@ -374,6 +374,10 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 💩 📝 ⚙️ 283. Validar desde nuestro custom hook (Muy densa!)
+Validar desde nuestro custom hook de forma dinámica los errores y mensajes que se van a lanzar en el form. 
+
+---
 ## 📝 ⚙️ 282. Manejo de errores del formulario
 
 La idea principal es realizar validaciones en Front, para evitar que llegue la petición a Back si no son correctos todos los campos.
