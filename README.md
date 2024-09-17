@@ -394,6 +394,58 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 285. Crear usuario con email y password
+
+En el provider de firebase `src/firebase/providers.js` creamos `registerUserWithEmailPassword`, que trabajará de fomra asincrona ya que recibe la información de Firebase mediante la función `createUserWithEmailAndPassword`
+
+```javascript
+export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
+    try {
+        const resp = await createUserWithEmailAndPassword( FirebaseAuth, email, password );
+        const { uid, photoURL } = resp.user;
+        console.log(resp);
+        // TODO: actualizar el displayName en Firebase
+
+        return {
+            ok: true,
+            uid, photoURL, email, displayName
+        }
+
+    } catch (error) {
+        console.log(error);
+        return { ok: false, errorMessage: error.message }
+    }
+    
+}
+```
+
+
+
+Una vez definido `registerUserWithEmailPassword` en el provider de Firebase, podemos crear en el `src/store/auth/thunks.js` la función `startCreatingUserWithEmailPassword` donde poder gestionar el `email`, `password` y `displayName`.
+
+```javascript
+export const startCreatingUserWithEmailPassword = ({ email, password, displayName }) => {
+    return async( dispatch ) => {
+
+        dispatch( checkingCredentials() );
+
+        const resp = await registerUserWithEmailPassword({ email, password, displayName });
+        
+        console.log(resp);
+    }
+}
+```
+
+Ahora en `src/auth/pages/RegisterPage.jsx` con la ayuda de `useDispatch` de react-redux podemos trabajar la información del `formState` en nuestra función `startCreatingUserWithEmailPassword`
+
+```javascript
+dispatch( startCreatingUserWithEmailPassword( formState ) );
+```
+
+Una vez creado el usario mediante el formulario de la RegisterPage, lo podremos ver en el panel de control de Firebase, en el [listado de usuarios](https://console.firebase.google.com/project/react-cursos-8db57/authentication/users).
+
+
+---
 ## 📝 ⚙️ 284. Mostrar errores en pantalla
 
 En `src/hoks/useForm.js`, se añade la constante `isFormValid` que recorre el array `formValidations` para comprobar que ningún campo da error.
