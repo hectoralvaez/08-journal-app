@@ -374,6 +374,34 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 282. Manejo de errores del formulario
+
+La idea principal es realizar validaciones en Front, para evitar que llegue la petición a Back si no son correctos todos los campos.
+
+En `src/auth/pages/RegisterPage.jsx` se crea manualmente una constante donde declaramos los campos a controlar sólo para ese formulario, el de la página de registro:
+
+```javascript
+const formValidations = {
+    email: [ (value) => value.includes('@'), 'El correo debe de tener una @'],
+    password: [ (value) => value.length >= 6 , 'El password debe de tener más de 6 carateres'],
+    displayName: [ (value) => value.length >= 1 , 'El nombre es obligatorio'],
+}
+```
+`formValidations` es un objeto con el nombre del campo y un array para cada uno con la comprobación y el texto a mostrar en caso de no cumplirse la condición que se comprueba.
+
+También en `src/auth/pages/RegisterPage.jsx`, a la hora de llamar al hook `useForm`, pasamos el objeto creado `formValidations` y añadimos también en la desestructuración los valores `displayNameValid`, `emailValid` y `passwordValid`.
+
+```javascript
+    const { displayName, email, password, onInputChange, formState, displayNameValid, emailValid, passwordValid } = useForm( formData, formValidations );
+```
+
+En `src/hoks/useForm.js`, se añade el objeto `formValidations` que vamos a manipular dentro del mismo hook.
+
+```javascript
+export const useForm = ( initialForm = {}, formValidations = {} ) => {
+```
+
+---
 ## 📝 ⚙️ 281. Formulario de registro de usuarios
 
 En `RegisterPage.jsx`, se aplica el hook que hemos creado nosotros (`useForm`) tal y como se ha hecho anteriormente en `LoginPage.jsx`
