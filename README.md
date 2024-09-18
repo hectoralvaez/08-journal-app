@@ -396,6 +396,26 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 290. Checking Authentication
+
+### src/ui/components/CheckingAuth.jsx
+Creamos un componente nuevo de UI `CheckingAuth`, que simplemente es un loading para cuando el estado de la autorización sea "checking".
+
+### src/store/auth/authSlice.js
+En `authSlice` definimos el estado inicial (`status`) a "checking".
+
+### src/router/AppRouter.jsx
+En `AppRouter`, antes de llegar a decidir si las rutas van a ser privadas o públicas, devolvemos el loading de `CheckingAuth` en caso de que el estatus sea "checking"
+
+```javascript
+const { status } = useSelector( state => state.auth );
+
+if( status === 'checking') {
+    return <CheckingAuth />
+}
+```
+
+---
 ## 📚 📝 ⚙️ 289. Resolución de la tarea - Login de usuario
 
 Ver los cambios aplicados en:
