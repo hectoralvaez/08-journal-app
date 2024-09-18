@@ -8,7 +8,9 @@
 ⚙️ Redux
 🪝 Hooks
 
-🚧 🔬 Pruebas
+🚧 🔬 🧪 Pruebas
+
+📚 Tarea
 
 ⭐ Clase interesante
 💩 Clase muy pesada 
@@ -392,6 +394,11 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 <br />
 
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+
+---
+## 📚 📝 ⚙️ 288. Realizar el login de usuario con correo y contraseña
+
+Primera versión de la tarea para realizar el login mediante el correo y contraseña almacenados anteriormente en Firebase.
 
 ---
 ## 📝 ⚙️ 287. Mostrar el mensaje de error de autenticación
