@@ -396,6 +396,16 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📚 📝 ⚙️ 289. Resolución de la tarea - Login de usuario
+
+Ver los cambios aplicados en:
+
+- LoginPage.jsx
+- providers.jsx
+- thunks.jsx
+
+
+---
 ## 📚 📝 ⚙️ 288. Realizar el login de usuario con correo y contraseña
 
 Primera versión de la tarea para realizar el login mediante el correo y contraseña almacenados anteriormente en Firebase.
