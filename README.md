@@ -396,6 +396,56 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 291. Mantener el estado de la autenticación al recargar
+
+### src/router/AppRouter.jsx
+En `AppRouter`, controlamos el estado de autorización del usuario mediante `onAuthStateChanged`.
+
+Si no se obtiene el usuario, hace el dispatch del "logout", si obtiene el usuario, hacer el "login".
+
+
+>`onAuthStateChanged` es una función que regresa un "observable".
+>
+>Un observable es una función que está emitiendo valores siempre que cambi el estado que observamos. 
+>
+>En nuestro caso, cuando el estado de la autenticación cambia, se vuelve a disparar nuestra función `onAuthStateChanged`.
+>
+>Por lo general, este tipo de función se tendría que ir limpiando, pero en este caso no se hace, ya que nos interesa controlar en todo momento si está autorizado o no.
+
+```javascript
+const dispatch = useDispatch();
+
+useEffect(() => {
+
+    onAuthStateChanged( FirebaseAuth, async( user ) => {
+        if( !user ) return dispatch( logout() );
+
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(login({ uid, email, displayName, photoURL }));
+
+    })
+
+}, [])
+```
+
+
+En la parte de rutas pasamos a controlar con `status` si el usuario está autenticado o no para redirigirlo a las rutas del Journal en caso positivo o al login en caso negativo.
+
+Se añade una reddirección a `/auth/login` fuera del condicional para asegurar la navegación.
+```javascript
+<Routes>
+    {
+    (status === 'authenticated')
+    ? <Route path="/*" element={ <JournalRoutes /> } />
+    : <Route path="/auth/*" element={ <AuthRoutes/> } />
+    }
+
+    <Route path="/*" element={ <Navigate to='/auth/login' /> } />
+</Routes>
+```
+Queda pendiente para la siguiente clase "cerrar sesión" para poder volver a "Login"
+
+---
 ## 📝 ⚙️ 290. Checking Authentication
 
 ### src/ui/components/CheckingAuth.jsx
