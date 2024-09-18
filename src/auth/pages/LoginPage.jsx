@@ -23,7 +23,7 @@ export const LoginPage = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        dispatch( startLoginWithEmailPasswor( {email, password} ) );
+        dispatch( startLoginWithEmailPassword( {email, password} ) );
     }
     
     const onGoogleSignIn = () => {
