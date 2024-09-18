@@ -394,6 +394,44 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 287. Mostrar el mensaje de error de autenticación
+### src/auth/pages/RegisterPage.jsx
+
+En `src/auth/pages/RegisterPage.jsx`, con el hook de react-redux `useSelector` controlamos el status de la autorización del usuario y desestructuramos el `errorMessage`
+
+```javascript
+const { status, errorMessage } = useSelector( state => state.auth );
+```
+
+Además, añadimos un controlo de status con `isCheckingAuthentication`:
+```javascript
+const isCheckingAuthentication = useMemo( () => status === 'checking', [status] );
+```
+
+Una vez tenemos esta información, podemos deshabilitar `disabled= { isCheckingAuthentication }` nuesto botón de envío:
+```javascript
+<Button 
+    disabled= { isCheckingAuthentication }
+    variant="contained"
+    type="submit"
+    fullWidth>
+    Crear cuenta
+</Button>
+```
+
+Y añadir un mensaje de error `errorMessage` que tendrá "display: none", siempre que NO tengamos un error:
+```javascript
+<Grid 
+    item
+    xs={ 12 }
+    display={ !!errorMessage ? '' : 'none' }    
+>
+    <Alert severity="error">{ errorMessage }</Alert>
+</Grid>
+```
+
+
+---
 ## 📝 ⚙️ 286. Actualizar el displayName y autenticar el usuario
 ### src/store/auth/thunks.js
 
