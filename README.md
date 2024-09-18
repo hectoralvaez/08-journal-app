@@ -394,6 +394,69 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 286. Actualizar el displayName y autenticar el usuario
+### src/store/auth/thunks.js
+
+Seguimos trabajando en `src/store/auth/thunks.js` y a la función `startCreatingUserWithEmailPassword` 
+
+Añadimos el condicional para comprobar que si NO ha ido "ok", haga un return del dispatch "logout" con el mensaje de error:
+
+```javascript
+if( !ok ) return dispatch( logout({ errorMessage }) )
+```
+
+En caso de que todo vaya OK, hacemos el dispatch del "login" con toda la info necesaria:
+
+```javascript
+        dispatch( login({ uid, displayName, email, photoURL }));
+```
+
+Resultado final de la función `startCreatingUserWithEmailPassword`
+
+```javascript
+export const startCreatingUserWithEmailPassword = ({ email, password, displayName }) => {
+    return async( dispatch ) => {
+
+        dispatch( checkingCredentials() );
+
+        const { ok, uid, photoURL, errorMessage } = await registerUserWithEmailPassword({ email, password, displayName });
+
+        if( !ok ) return dispatch( logout({ errorMessage }) )
+
+        dispatch( login({ uid, displayName, email, photoURL }));
+    }
+}
+```
+### src/firebase/providers.js
+En el provider de firebase `src/firebase/providers.js` dentro de `registerUserWithEmailPassword`, añadimos la función `updateProfile` con await, ya que es una función asíncrona:
+
+```javascript
+        await updateProfile( FirebaseAuth.currentUser, { displayName } );
+```
+
+Resultado final de la función `registerUserWithEmailPassword`
+
+```javascript
+export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
+    try {
+        const resp = await createUserWithEmailAndPassword( FirebaseAuth, email, password );
+        const { uid, photoURL } = resp.user;
+        await updateProfile( FirebaseAuth.currentUser, { displayName } );
+
+        return {
+            ok: true,
+            uid, photoURL, email, displayName
+        }
+
+    } catch (error) {
+        console.log(error);
+        return { ok: false, errorMessage: error.message }
+    }
+}
+```
+
+
+---
 ## 📝 ⚙️ 285. Crear usuario con email y password
 
 En el provider de firebase `src/firebase/providers.js` creamos `registerUserWithEmailPassword`, que trabajará de fomra asincrona ya que recibe la información de Firebase mediante la función `createUserWithEmailAndPassword`
