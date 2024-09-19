@@ -148,7 +148,51 @@ Este es un proyecto de código abierto. Consulte el repositorio oficial para obt
     - [Axios](https://axios-http.com) Fernando lo prefiere a Fetch
 
 
-## HERRAMIENTAS
+## BEST PRACTICES
+### SOLID
+Trabajar con los principios SOLID significa diseñar software de manera que sea fácil de entender, mantener y extender, separando responsabilidades, favoreciendo la reutilización y evitando dependencias innecesarias.
+
+
+#### 1. S - Single Responsibility Principle (SRP)
+##### Principio de Responsabilidad Única [Solo una cosa a la vez]
+Este principio establece que una clase debe tener una única responsabilidad o motivo para cambiar. En otras palabras, una clase debe encargarse solo de un aspecto del sistema y no tener múltiples razones para ser modificada. Esto facilita el mantenimiento, ya que los cambios en una funcionalidad no afectarán a otras responsabilidades de la clase.
+
+> Imagina que tienes un juguete que hace muchas cosas: es un auto, un avión, y también canta canciones. Si se rompe algo, es difícil arreglarlo porque no sabes si se rompió el auto, el avión o la música. Pero si tienes un auto, un avión y un juguete que canta por separado, es más fácil arreglar uno si se rompe, porque solo hace una cosa.
+
+---
+#### 2. O - Open/Closed Principle (OCP)
+##### Principio Abierto/Cerrado [Las cosas se pueden mejorar, pero no romper]
+
+Este principio dice que el software debe estar abierto para extensión, pero cerrado para modificación. En otras palabras, debes poder añadir nuevas funcionalidades sin modificar el código existente. Esto se logra a menudo mediante herencia y polimorfismo en lenguajes orientados a objetos.
+
+> Piensa en tus juguetes de bloques. Puedes agregar más bloques y hacer que tu torre sea más alta, pero no necesitas destruir la torre que ya construiste. Así, siempre puedes mejorar tu torre sin tener que empezar de nuevo cada vez.
+
+---
+#### 3. L - Liskov Substitution Principle (LSP)
+##### Principio de Sustitución de Liskov [Los sustitutos deben funcionar igual]
+
+Este principio, enunciado por Barbara Liskov, establece que los objetos de una subclase deben poder reemplazar a los objetos de la superclase sin alterar el correcto funcionamiento del sistema. Básicamente, una subclase debe ser intercambiable con su clase base sin romper la lógica del programa.
+
+> Imagina que tienes un perrito de juguete que ladra cuando lo aprietas, y luego te dan un gatito de juguete. Si aprietas al gatito, esperas que haga "miau" en vez de "guau". El gatito debería funcionar igual que el perrito, solo que con su propio sonido. Ambos son animales de juguete, pero hacen su sonido específico sin cambiar la manera en que juegas con ellos.
+
+---
+#### 4. I - Interface Segregation Principle (ISP)
+##### Principio de Segregación de Interfaces [No pidas cosas que no necesitas]
+
+Este principio sugiere que es mejor tener muchas interfaces específicas que una interfaz grande y general. Los clientes no deberían verse obligados a depender de interfaces que no utilizan. Esto evita que las clases implementen métodos innecesarios.
+
+> Imagínate que tienes un control remoto que tiene muchos botones: uno para el auto, uno para la tele, uno para el tren, y uno para las luces. Pero tú solo quieres controlar tu tren de juguete. No necesitas todos esos botones extra, solo uno que controle el tren. Es mejor tener controles más simples, solo con los botones que de verdad usas.
+
+---
+#### 5. D - Dependency Inversion Principle (DIP)
+##### Principio de Inversión de Dependencias [Las cosas importantes mandan, no los detalles]
+
+Este principio establece que los módulos de alto nivel no deben depender de módulos de bajo nivel, ambos deben depender de abstracciones. Además, las abstracciones no deben depender de los detalles; son los detalles los que deben depender de las abstracciones. Esto promueve el desacoplamiento entre diferentes módulos del sistema, facilitando su mantenimiento y modificación.
+
+
+> Es como cuando armas un robot con piezas de construcción. El cerebro del robot (la parte importante) le dice a las piezas cómo moverse, pero no necesita saber exactamente cómo es cada pieza. Si cambias las piezas por otras diferentes, el robot sigue funcionando bien porque el cerebro sigue dando las órdenes, y las piezas solo hacen lo que les toca.
+
+## HERRAMIENTAS
 ### [Firebase](https://console.firebase.google.com)
 Plataforma de desarrollo de aplicaciones creada por Google que proporciona una variedad de herramientas y servicios diseñados para ayudar a los desarrolladores a construir, mejorar y escalar aplicaciones móviles y web de manera eficiente. Es particularmente popular debido a su integración con aplicaciones en tiempo real, su facilidad de uso y la variedad de productos que ofrece sin la necesidad de manejar servidores complejos.
 
@@ -394,6 +438,12 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 <br />
 
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+
+---
+## 📝 ⚙️ 292. Custom Hook para autenticación
+
+Creamos un nuevo hook `useCheckAuth` con toda la lógica que habíamos creado dentro de `AppRouter.jsx`, de manera que es mucho más limpio, mantenible, flexible y escalable todo el código; siguiendo los principios SOLID.
+
 
 ---
 ## 📝 ⚙️ 291. Mantener el estado de la autenticación al recargar
