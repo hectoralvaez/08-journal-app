@@ -440,6 +440,54 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 ⚙️ 293. Logout de Firebase
+
+1. En `src/store/auth/thunks.js` creamos la función `startLogout`.
+
+```javascript
+export const startLogout = () => {
+    return async( dispatch ) => {
+        await logoutFirebase();
+
+        dispatch( logout({}) );
+
+    }
+}
+```
+
+2. En `src/firebase/providers.js` creamos la función `logoutFirebase`.
+
+```javascript
+export const logoutFirebase = async() => {
+    return await FirebaseAuth.signOut();
+}
+```
+
+3. En `src/journal/components/NavBar.jsx` añadimos la función `onLogout` que mediante el `dispatch()` desencadena el `startLogout()`.
+
+```javascript
+    const dispatch = useDispatch();
+
+    const onLogout = () => {
+        dispatch( startLogout() );
+    }
+```
+
+EXTRA:
+Mostrar el nombre del usuario `displayName` en la página:
+
+```javascript
+const { displayName } = useSelector( state => state.auth );
+
+...
+
+<Typography variant="h6" noWrap component='div' >{ displayName }</Typography>
+```
+
+
+
+
+---
 ## 📝 ⚙️ 292. Custom Hook para autenticación
 
 Creamos un nuevo hook `useCheckAuth` con toda la lógica que habíamos creado dentro de `AppRouter.jsx`, de manera que es mucho más limpio, mantenible, flexible y escalable todo el código; siguiendo los principios SOLID.
