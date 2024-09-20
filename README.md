@@ -440,6 +440,11 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
 
 ---
+## 📝 🖌️ 294. Animaciones para la aplicación
+
+Añadimos las animaciones de "www.animate.style".
+
+---
 ## 📝 ⚙️ 293. Logout de Firebase
 
 1. En `src/store/auth/thunks.js` creamos la función `startLogout`.
