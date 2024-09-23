@@ -19,6 +19,12 @@
 💾 Instalación y configuracion
 🔒 Seguridad rutas
 
+
+✏️  Create
+📖  Read
+♻️  Update
+🗑️ Delete
+
 🏁 Fin Sección 
 ### URLS DEL PROYECTO:  
 
@@ -437,9 +443,27 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 
 <br />
 
-# 🏁 FIN SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+# 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+## 🛢️ 297. Temas puntuales de la sección
+
+### ¿Qué veremos en esta sección?
+
+- CRUD hacia Firestore
+- Expandiendo nuestro store añadiendo otros reducers
+- Seleccionar y subir archivos
+- Animaciones adicionales a nuestra aplicación
+- Limpieza en el logout
+
+Esta sección está enfocada ahora en las entradas de nuestro diario, asegurándose de que grabe únicamente en el documento del usuario autenticado.
+
+# 🆕 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
+
+<br />
+
+# 🏁 SECCIÓN 19: Introducción a Redux y autenticación en Firebase
+
 ## 📝 🖌️ 294. Animaciones para la aplicación
 
 Añadimos las animaciones de "www.animate.style".
@@ -1066,10 +1090,10 @@ export const store = configureStore({
 En esta sección configuraremos Redux en nuestro proyecto por primera vez, aplicado al inicio en la parte de la autenticación y mantener el estado de la misma a lo largo de toda la aplicación.
 
 
-# 🆕 INICIO SECCIÓN Sección 19: Introducción a Redux y autenticación en Firebase
+# 🆕 SECCIÓN 19: Introducción a Redux y autenticación en Firebase
 
 ---
-# 🏁 FIN SECCIÓN 18: Redux - ¿Qué es y conceptos? + React Redux
+# 🏁 SECCIÓN 18: Redux - ¿Qué es y conceptos? + React Redux
 
 ---
 
@@ -1576,11 +1600,11 @@ Redux es una herramienta poderosa para aplicaciones que requieren un manejo comp
 
 Es una sección sumamente pequeña, pero quiero darles una explicación teórica sobre Redux antes de entrar en él, pero la ventaja es que para estas alturas, ya deberíamos de saber sobre el Reducer, el cual es el corazón del Redux, por consecuencia aprender Redux en este instante debería ser más fácil!
 
-# 🆕 INICIO SECCIÓN 18: Redux - ¿Qué es y conceptos? + React Redux
+# 🆕 SECCIÓN 18: Redux - ¿Qué es y conceptos? + React Redux
 
 <br />
 
-# 🏁 FIN SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
+# 🏁 SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
 
 ---
 
@@ -2072,11 +2096,11 @@ También creamos las nuevas carpetas que necesitaremos:
 ---
 
 
-# 🆕 INICIO SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
+# 🆕 SECCIÓN 17: JournalApp  - MaterialUI - Estructura y Diseño
 
 <br />
 
-# 🏁 FIN SECCIÓN 16: Pruebas de nuestra aplicación de Heroes
+# 🏁 SECCIÓN 16: Pruebas de nuestra aplicación de Heroes
 ---
 
 ## 🔬 234. Resumen de las pruebas realizadas
@@ -2354,11 +2378,11 @@ Creamos toda la configuración del entorni de pruebas siguiendo los pasos "Guia 
 Recuerden que el objetivo de las pruebas, es ir probando cosas nuevas cada vez y tener un repertorio completo de diferentes casos.
 
 
-# 🆕 INICIO SECCIÓN 16: Pruebas de nuestra aplicación de Heroes
+# 🆕 SECCIÓN 16: Pruebas de nuestra aplicación de Heroes
 
 <br />
 
-# 🏁 FIN SECCIÓN 15: Protección de rutas
+# 🏁 SECCIÓN 15: Protección de rutas
 
 # 🔒 217. Recordar la última página visitada
 
@@ -2560,13 +2584,13 @@ Hay varias maneras de gestionar la protección de rutas, en este caso, decidimos
 
 Esta es una sección pequeña pero importante para trabajar las bases de la autenticación y protección de nuestra aplicación.
 
-# 🆕 INICIO SECCIÓN 15: Protección de rutas
+# 🆕 SECCIÓN 15: Protección de rutas
 
 <br />
 
 ---
 
-# 🏁 FIN SECCIÓN 14: HeroesApp - Single Page Application (SPA)
+# 🏁 SECCIÓN 14: HeroesApp - Single Page Application (SPA)
 
 ---
 
@@ -3041,13 +3065,13 @@ El módulo de `auth` será independiente del de `heroes`.
 
 
 
-# 🆕 INICIO SECCIÓN 14: HeroesApp - Single Page Application (SPA)
+# 🆕 SECCIÓN 14: HeroesApp - Single Page Application (SPA)
 
 <br />
 
 ---
 
-# 🏁 FIN SECCIÓN 13: Bonus: Repositorio de Custom Hooks
+# 🏁 SECCIÓN 13: Bonus: Repositorio de Custom Hooks
 
 
 
@@ -3070,13 +3094,13 @@ https://github.com/hectoralvaez/custom-hooks
 No es una sección obligatoria, pero puede ayudarles a tener su código ordenado y fácil de utilizar en proyectos futuros.
 
 
-# 🆕 INICIO SECCIÓN 13: Bonus: Repositorio de Custom Hooks
+# 🆕 SECCIÓN 13: Bonus: Repositorio de Custom Hooks
 
 <br />
 
 ---
 
-# 🏁 FIN SECCIÓN 12: Pruebas unitarias y de integración - Hooks
+# 🏁 SECCIÓN 12: Pruebas unitarias y de integración - Hooks
 
 ---
 # 🚧 🪝 179. Pruebas generales en nuestro AppRouter
@@ -3761,13 +3785,13 @@ Hay varios extras, como la prueba de un Reducer, que realmente no es nada compli
 
 ---
 
-# 🆕 INICIO SECCIÓN 12: Pruebas unitarias y de integración - Hooks
+# 🆕 SECCIÓN 12: Pruebas unitarias y de integración - Hooks
 
 <br />
 
 ---
 
-# 🏁 FIN SECCIÓN 11: Profundizando Hooks - useContext
+# 🏁 SECCIÓN 11: Profundizando Hooks - useContext
 
 
 <br />
@@ -4040,13 +4064,13 @@ El objetivo de la sección es principalmente aprender sobre el Context, el Route
 
 ---
 
-# 🆕 INICIO SECCIÓN 11: Profundizando Hooks - useContext
+# 🆕 SECCIÓN 11: Profundizando Hooks - useContext
 
 <br />
 
 ---
 
-# 🏁 FIN SECCIÓN 10: Profundizando Hooks - useReducer
+# 🏁 SECCIÓN 10: Profundizando Hooks - useReducer
 
 
 <br />
@@ -4428,11 +4452,11 @@ Esta es una sección dedicada a comprender el concepto de un Reducer, el cual es
 
 <br />
 
-# 🆕 INICIO SECCIÓN 10: Profundizando Hooks - useReducer
+# 🆕 SECCIÓN 10: Profundizando Hooks - useReducer
 
 ---
 
-# 🏁 FIN SECCIÓN 9: Profundizando Hooks - Generales
+# 🏁 SECCIÓN 9: Profundizando Hooks - Generales
 
 
 # 🪝 135. Tarea Memorize
@@ -5474,11 +5498,11 @@ Adicionalmente estaremos dejando las bases para lo que será una sección de pru
 
 ---
 
-# 🆕 INICIO SECCIÓN 9: Profundizando Hooks - Generales
+# 🆕 SECCIÓN 9: Profundizando Hooks - Generales
 
 ---
 
-# 🏁 FIN SECCIÓN 8: Testing - Probando la aplicación de GifExpert
+# 🏁 SECCIÓN 8: Testing - Probando la aplicación de GifExpert
 
 
 ## 🔬 110. Pruebas de tarea (sobre GifExpert)
@@ -5802,13 +5826,13 @@ En esta sección seguiremos expandiendo todo lo que habíamos visto anteriorment
 
 ---
 
-## 🔬 INICIO SECCIÓN 8: Testing - Probando la aplicación de GifExpert
+## 🔬 SECCIÓN 8: Testing - Probando la aplicación de GifExpert
 
 
 ---
 
 
-# FIN SECCIÓN 7: Generando el build de producción y despliegues
+# SECCIÓN 7: Generando el build de producción y despliegues
 
 
 # 95. Desplegando aplicación en Github Pages
@@ -5873,13 +5897,13 @@ Aunque es una sección pequeña, les puede servir para desplegar infinidad de pr
 ---
 
 
-# INICIO SECCIÓN 7: Generando el build de producción y despliegues
+# SECCIÓN 7: Generando el build de producción y despliegues
 
 
 ---
 
 
-# FIN SECCIÓN 6: GifExpertApp - Aplicación
+# SECCIÓN 6: GifExpertApp - Aplicación
 
 # 88. Archivos de barril
 Los "Archivos de barril" sirven para unificar los compoents, o heplers, o hooks en un solo archivo encargado de exportar, de manera que en ua sola linea se pueden hacer todos los imports, como trabaja React:  
@@ -6163,5 +6187,5 @@ En realidad podría ser así:
 <br />
 
 ---
-# INICIO SECCIÓN 6: GifExpertApp - Aplicación
+# SECCIÓN 6: GifExpertApp - Aplicación
 # 08-journal-app
