@@ -451,6 +451,31 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+## 🛢️ 301. Crear una nueva nota
+
+Empezamos a trabajar con el `thunks.js` para conectar y obtener la información de Firestore.
+
+Lo que necesitaremos importar para trabajar con Firestore:
+```javascript
+import { collection, doc, setDoc } from "firebase/firestore/lite";
+import { FirebaseDB } from "../../firebase/config";
+```
+
+Mediante el `getState()` del store "auth", obtenemos el id de usuario (`uid`)
+
+```javascript
+const { uid } = getState().auth;
+```
+
+Generamos el `newDoc` y aplicamos al `setDoc`.
+```javascript
+const newDoc = doc( collection( FirebaseDB, `${ uid }/journal/notes` ) );
+await setDoc( newDoc, newNote );
+```
+
+
+
+---
 ## 🛢️ 300. Preparar la base de datos - CloudFirestore
 
 
