@@ -481,7 +481,25 @@ setActiveNote: (state, action ) => {
 },
 ```
 
+En la tarea se bloquea el botón de "Añadir" con la variable `isSaving`.
 
+Al final, lo que hacemos es mostrar la nota cuando está activa (`NoteView`) y el (`NothingSelectedView`) cuando no hay nota activa.
+
+Para eso desestructuramos también el valor `active` del `state.journal`.
+
+```javascript
+const { isSaving, active } = useSelector( state => state.journal );
+```
+
+El condicional para mostrar una vista o la otra:
+
+```javascript
+{
+    (!!active)
+    ? <NoteView />
+    : <NothingSelectedView />
+}
+```
 
 ---
 ## 🛢️ 301. Crear una nueva nota
