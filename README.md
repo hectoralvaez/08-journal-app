@@ -444,10 +444,61 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
 - Todo lo que va en los reducers tiene que ser síncrono, no puede ser asíncrono, son reducers, es decir, funciones puras. (🛢️ 299. JournalSlice)
+- Cuando tenemos acciones asincronas como conectar con una base de datos y esperar respuesta, estas acciones asíncronas se trabajan en el `thunks.js` (🛢️ 300. Preparar la base de datos - CloudFirestore)
 
 <br />
 
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
+
+---
+## 🛢️ 300. Preparar la base de datos - CloudFirestore
+
+
+Arrancamos el `thunks.js` con la estructura que tendrá `startNewNote`:
+
+```javascript
+export const startNewNote = () => {
+    return async( dispatch ) => {
+
+        // uid
+
+        const newNote = {
+            title: '',
+            body: '',
+            date: new Date().getTime(),
+        }
+
+        // dispath( newNote)
+        // dispath( activateNote)
+    }
+}
+```
+
+Cuando tenemos acciones asincronas como conectar con una base de datos y esperar respuesta, estas acciones asíncronas se trabajan en el `thunks.js`
+
+### Firestore vs Realtime
+Firestore Database y Realtime Database son dos servicios de bases de datos en la nube de Firebase, pero tienen diferencias clave:
+
+#### Firestore Database
+1. Estructura de Datos: Utiliza un modelo de documentos y colecciones, lo que facilita la organización y consulta de datos complejos.
+2. Consultas: Ofrece consultas más avanzadas y potentes, como búsquedas complejas y filtros.
+3. Escalabilidad: Está diseñado para escalar mejor con grandes volúmenes de datos y usuarios concurrentes.
+4. Soporte Offline: Permite la sincronización de datos en modo offline más robusta.
+5. Seguridad: Tiene un sistema de reglas de seguridad más flexible y detallado.
+
+#### Realtime Database
+1. Estructura de Datos: Utiliza un modelo de datos JSON que puede ser más simple pero menos organizado para datos complejos.
+2. Consultas: Tiene capacidades de consulta más limitadas en comparación con Firestore.
+3. Sincronización en Tiempo Real: Está optimizado para la sincronización de datos en tiempo real, lo que es ideal para aplicaciones que requieren actualizaciones instantáneas.
+4. Costo: Puede ser más económico para aplicaciones pequeñas debido a su modelo de precios basado en el ancho de banda.
+
+#### Recomendación
+Si tu aplicación necesita consultas complejas, escalabilidad o una estructura de datos más organizada, Firestore es la mejor opción. 
+Si priorizas la sincronización en tiempo real y tienes un proyecto más pequeño, Realtime Database podría ser suficiente.
+
+En general, Firestore tiende a ser la opción más recomendada para nuevos proyectos.
+
+
 
 ---
 ## 🛢️ 299. JournalSlice
