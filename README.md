@@ -25,6 +25,9 @@
 ♻️  Update
 🗑️ Delete
 
+📁📂 Carpeta
+📄 Archivo
+
 🏁 Fin Sección 
 ### URLS DEL PROYECTO:  
 
@@ -434,16 +437,79 @@ Aquí el ejemplo concreto con [Vite.js](https://github.com/mui/material-ui/tree/
 ```
 
 
-## BUENAS PRÁCTICAS:
-Cuando estamos trabajando un código, pero todavía no se ha terminado, para evitar pensar que está funcionando correctamente un `return`
-
+## BUENAS PRÁCTICAS, RECORDATORIOS Y CONSEJOS:
+- Cuando estamos trabajando un código, pero todavía no se ha terminado, para evitar pensar que está funcionando correctamente un `return`
 ```javascript
 throw new Error ('action.type "ABC" todavía no se ha definido');
 ```
 
+- Todo lo que va en los reducers tiene que ser síncrono, no puede ser asíncrono, son reducers, es decir, funciones puras. (🛢️ 299. JournalSlice)
+
 <br />
 
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
+
+---
+## 🛢️ 299. JournalSlice
+
+Añadimos en nuestra carpeta `src/store` la carpeta `src/store/journal` (a la altura de la carpeta "auth" que hemos trabajado en la sección anterior) y dentro de la carpeta "journal" repetimos la estructura de la carpeta "auth" con los siguientes archivos:
+
+```
+📂 store
+    📁 auth
+    📂 journal
+        📄 index.js (archivo de barril)
+        📄 journalSlice.js (initialState + reducers)
+        📄 thunks.js
+```
+
+
+En journalSlice.js definimos el estado inicial y apuntamos el objeto que podría generarse cuando esté "active"
+
+```javascript
+initialState: {
+    isSaving: true,
+    savedMessage: '',
+    notes: [],
+    active: null,
+    // active: {
+    //     id: 'acb123',
+    //     title: '',
+    //     body: '',
+    //     date: 1234567,
+    //     imageURLS: [], // https://foto1.jpg, https://foto2.jpg, https://foto3.jpg...
+    // }
+
+},
+```
+
+En los "reducers" añadimos las funciones que necesitaremos para gestionar las "notas". Las accciones que forman el CRUD.
+
+```javascript
+reducers: {
+    addNewEmptyNote: (state, action ) => {
+
+    },
+    setActiveNote: (state, action ) => {
+
+    },
+    setNotes: (state, action ) => {
+
+    },
+    setSavingNote: (state ) => {
+
+    },
+    updateNote: (state, action ) => {
+
+    },
+    deleteNoteById: (state, action ) => {
+
+    },
+}
+```
+
+Todo lo que va en los reducers tiene que ser síncrono, no puede ser asíncrono, son reducers, es decir, funciones puras.
+
 
 ---
 ## 🛢️ 297. Temas puntuales de la sección
