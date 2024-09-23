@@ -451,6 +451,39 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+## 🛢️ 302. Activar la nota creada
+
+### src/store/journal/thunks.js
+#### startNewNote
+1. Asignamos el id que nos ha generado Firestore en nuestro newDoc a nuestra newNote:
+
+```javascript
+newNote.id = newDoc.id;
+```
+
+2. Generamos los dispatchs que gestionamos en `src/store/journal/journalSlice.js`
+```javascript
+dispatch( addNewEmptyNote( newNote ) );
+dispatch( setActiveNote( newNote ) );
+```
+
+
+#### src/store/journal/journalSlice.js
+
+1. Añadimos las acciones a las funciones:
+```javascript
+addNewEmptyNote: (state, action ) => {
+    state.notes.push( action.payload );
+    state.isSaving = false;
+},
+setActiveNote: (state, action ) => {
+    state.active = action.payload;
+},
+```
+
+
+
+---
 ## 🛢️ 301. Crear una nueva nota
 
 Empezamos a trabajar con el `thunks.js` para conectar y obtener la información de Firestore.
