@@ -451,6 +451,75 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+## 🛢️ 303. Cargar notas de Firestore
+
+En esta clase cargaremos todas las notas del usuario creadas en Firestore y las mantendremos en la aplicación, ya que actualmente, al refrescar el navegador, se pierden las notas de nuestro `store`, aunque, evidentemente, siguen en Firestore.
+
+1. Creamos un "helper" llamado `loadNotes` que nos permitirá conectar con Firebase para obtener todas las notas vinculadas al usuario (leer comentarios dentro del código):
+
+```javascript
+import { collection, getDocs } from "firebase/firestore/lite";
+import { FirebaseDB } from "../firebase/config";
+
+export const loadNotes = async( uid = '' ) => {
+    // Comprobamos que el id de usuario existe
+    if ( !uid ) throw new Error('El UID del usuario no existe.');
+
+    // Realizamos la consulta a BBDD para obtener la "collection" llamada "notes"
+    const collectionRef = collection( FirebaseDB, `${ uid }/journal/notes` );
+    const docs = await getDocs( collectionRef );
+
+    // Se crea un array vacín "notes"
+    const notes = [];
+    // Se recorre el resultado obtenido en "docs" y se rellena el array "notes" con forEach + push
+    docs.forEach( doc => {
+        notes.push({ 
+            id: doc.id,
+            ...doc.data()
+        });
+    });
+    
+    console.log(notes);
+    // Devolvemos "notes" con toda la info
+    return notes;
+}
+```
+
+2. En `src/store/journal/thunks.js` creamos `startLoadingNotes`:
+
+```javascript
+export const startLoadingNotes = () => {
+    // Función asíncrona
+    return async( dispatch, getState ) => {
+        // desestructuramos `uid` de nuestro store "auth"
+        const { uid } = getState().auth;
+        // si el usuario no existe devolvemos el error:
+        if ( !uid ) throw new Error('El UID del usuario no existe.');
+
+        // Con el helper recién creado `loadNotes`, obtenemos las notas mediante el uid 
+        const notes = await loadNotes( uid );
+
+        // Despachamos las notas con el reducer `setNotes`
+        dispatch(setNotes( notes ));
+    }
+}
+```
+
+3. Definimos el `setNotes` dentro de `src/store/journal/journalSlice.js`
+
+```javascript
+setNotes: (state, action ) => {
+    state.notes = action.payload;
+},
+```
+
+4. Es importante saber en qué punto llamar a las notas vinculadas al usuario. En nuestro caso, se hace la llamada al `startLoadingNotes` en `src/hoks/useCheckAuth.js`, es decir, en el momento de confirmar que el usuario está autentificado.
+```javascript
+dispatch( startLoadingNotes() );
+```
+
+
+---
 ## 🛢️ 302. Activar la nota creada
 
 ### src/store/journal/thunks.js
