@@ -493,6 +493,41 @@ Una vez tenemos las notas, las llamamos en el listado mediante el nuevo componen
 ```
 
 
+4. Hemos desestructurado los campos que necesitamos esparciendo el contenido de la nota en la llamada al `SideBarItem`
+```javascript
+// ANTES
+<SideBarItem key={ note.id } note={ note } />
+
+// AHORA
+<SideBarItem key={ note.id } { ...note } />
+```
+
+De manera que será más limpio trabajar con los campos sin tener que estar haciendo referencia constantemente a `note.xxx`:
+```javascript
+// ANTES
+<ListItemText secondary={ note.body } />
+// AHORA
+<ListItemText secondary={ body } />
+```
+
+
+
+3. En esta V2, ya se ve que se empieza a añadir más lógica al component `SideBarItem`. Vamos a controlar el tamaño del titular mediante el hook `useMemo` y en caso de ser mayor de 17 caracteres, se va a cortar y vamos a añadir puntos suspensivos:
+
+```javascript
+const newTitle = useMemo( () => {
+    return title.length > 17
+        ? title.substring(0,17) + '...'
+        : title;
+},[title])
+```
+
+De manera que ahora ya no usaremos `title`, si no `newTitle`
+```javascript
+<ListItemText primary={ newTitle } />
+```
+
+
 ---
 ## 🛢️ 303. Cargar notas de Firestore
 

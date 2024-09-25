@@ -28,7 +28,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                 <List disablePadding>
                     {
                         notes.map( note => (
-                            <SideBarItem key={ note.id } note={ note } />
+                            <SideBarItem key={ note.id } { ...note } />
                         ))
                     }
                 </List>
