@@ -1,8 +1,16 @@
+import { useDispatch } from "react-redux";
 import { Grid, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { TurnedInNot } from "@mui/icons-material";
 import { useMemo } from "react";
+import { setActiveNote } from "../../store/journal";
 
 export const SideBarItem = ({ title = '', body, id }) => {
+
+    const dispatch = useDispatch();
+
+    const onClickNote = () => {
+        dispatch( setActiveNote({ note }) );
+    }
 
     const newTitle = useMemo( () => {
         return title.length > 17
@@ -11,7 +19,9 @@ export const SideBarItem = ({ title = '', body, id }) => {
     },[title])
 
     return (
-        <ListItem disablePadding>
+        <ListItem 
+            disablePadding
+            onClick={ onClickNote }>
             <ListItemButton>
                 <ListItemIcon>
                     <TurnedInNot />

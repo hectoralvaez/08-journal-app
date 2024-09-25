@@ -451,6 +451,33 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+## 🛢️ 305. Activar una nota
+
+### Tarea V1
+
+En `src/journal/components/SideBarItem.jsx` añado la función `onClickNote`, que lo que hará será disparar el `dispatch` del "reducer" de `journalSlide` `setActiveNote` que tiene que recibir la información de la nota activa "note":
+
+```javascript
+
+const dispatch = useDispatch();
+
+const onClickNote = () => {
+    dispatch( setActiveNote({ note }) );
+}
+```
+
+Y se añade al `ListItem` la función creada `onClickNote`
+
+```javascript
+<ListItem disablePadding onClick={ onClickNote }>
+    ...
+</ListItem>
+```
+
+NO FUNCIONA
+
+
+---
 ## 🛢️ 304. Mostrar las notas en el menú lateral
 
 1. Generamos un nuevo component `SideBarItem`, ya que habrá que meter acciones en los botones y más programación, que si dejaramos los `ListItem` dentro de `List` como lo teníamos hasta ahora, nos haría más complicado el matenimiento y no estaríamos siguiendo los principios de SOLID.
