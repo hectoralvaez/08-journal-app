@@ -451,6 +451,49 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+## 🛢️ 304. Mostrar las notas en el menú lateral
+
+1. Generamos un nuevo component `SideBarItem`, ya que habrá que meter acciones en los botones y más programación, que si dejaramos los `ListItem` dentro de `List` como lo teníamos hasta ahora, nos haría más complicado el matenimiento y no estaríamos siguiendo los principios de SOLID.
+```javascript
+export const SideBarItem = ({ note }) => {
+    return (
+        <ListItem key={note.id} disablePadding>
+            <ListItemButton>
+                <ListItemIcon>
+                    <TurnedInNot />
+                </ListItemIcon>
+                <Grid container>
+                    <ListItemText primary={note.title} />
+                    <ListItemText secondary={ note.body } />
+                </Grid>
+            </ListItemButton>
+        </ListItem>
+    );
+};
+```
+
+
+
+2. En `src/journal/components/SideBar.jsx` obtenemos las notas del usuario directamente del store con `useSelector` de `react-redux`:
+
+```javascript
+const { notes } = useSelector( state => state.journal );
+```
+
+Una vez tenemos las notas, las llamamos en el listado mediante el nuevo component `SideBarItem`:
+
+```javascript
+<List disablePadding>
+    {
+        notes.map( note => (
+            <SideBarItem key={ note.id } note={ note } />
+        ))
+    }
+</List>
+```
+
+
+---
 ## 🛢️ 303. Cargar notas de Firestore
 
 En esta clase cargaremos todas las notas del usuario creadas en Firestore y las mantendremos en la aplicación, ya que actualmente, al refrescar el navegador, se pierden las notas de nuestro `store`, aunque, evidentemente, siguen en Firestore.
