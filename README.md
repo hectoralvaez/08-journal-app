@@ -476,6 +476,18 @@ Y se añade al `ListItem` la función creada `onClickNote`
 
 NO FUNCIONA
 
+### Tarea V2 (corrección)
+
+El problema era que había que llamar a los campos desestructurados:
+
+```javascript
+export const SideBarItem = ({ title = '', body, id, date, imageURLS = [] }) => {
+...
+dispatch( setActiveNote({ title, body, id, date, imageURLS }) );
+```
+
+También, se cambia el `onClick={ onClickNote }` del `ListItem` a `ListItemButton`, pero funcionaba igual.
+
 
 ---
 ## 🛢️ 304. Mostrar las notas en el menú lateral
