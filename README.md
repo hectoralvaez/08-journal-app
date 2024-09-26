@@ -482,6 +482,57 @@ useEffect(() => {
 
 ---
 
+## 🛢️ 311. Seleccionar archivos desde React
+
+### `src/journal/views/NoteView.jsx`
+
+
+En el Grid, añadimos el input `type="file"`, que nos permite subir archivos por defecto con la etiqueta "multiple". Como en MUI no está estilado este input, lo ocultamos `style={ { display: 'none' }}` y lo vinculamos con `useRef()` a el icono de `UploadFileOutlined`.
+
+Para eso creamos `fileInputRef`
+
+```javascript
+const fileInputRef = useRef();
+```
+
+Añadimos `ref={ fileInputRef }` al `input type="file"`
+
+Luego solo queda vincular el `onClick` del `IconButton` con el click del `fileInputRef` de la siguiente manera:
+`onClick={ () => fileInputRef.current.click() }`
+
+```javascript
+<input type="file"
+    multiple
+    ref={ fileInputRef }
+    onChange={ onFileInputChange }
+    style={ { display: 'none' }}
+/>
+<IconButton
+    color="primary"
+    disabled={ isSaving }
+    onClick={ () => fileInputRef.current.click() }
+>
+    <UploadFileOutlined />
+</IconButton>
+```
+
+Por otra parte, añadimos la función `onFileInputChange` que estará vinculada al `onChange` del `input type="file"`:
+
+```javascript
+const onFileInputChange = ({ target }) => {
+    if( target.files === 0 ) return;
+
+    console.log('subiendo archivos');
+    // dispatch( startUploadingFilees( target.files ) );
+}
+```
+
+Queda pendiente lanzar el dispatch.
+
+
+
+---
+
 ## ⭐🛢️ 310. Cloudinary.com - Backend para subir imágenes
 
 En esta clase se explica cómo configurar cloudinary y un test de subida de archivo a cloudinary via Postman.
