@@ -396,6 +396,8 @@ Aquí el ejemplo concreto con [Vite.js](https://github.com/mui/material-ui/tree/
 - [Animate.css](https://animate.style/) permite implementar varias animaciones de manera fácil.
 - [sweetAlert2](https://sweetalert2.github.io/) librería uqe permite implementar mensajes de alerta con un duseño más trabajado.
 
+- [cloudinary](https://cloudinary.com/) Backend para gestión de imágenes. [Documentación](https://cloudinary.com/documentation/image_upload_api_reference#banner)
+
 ---
 
 # EXTRA INFO
@@ -477,6 +479,12 @@ useEffect(() => {
 <br />
 
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
+
+---
+
+## ⭐🛢️ 310. Cloudinary.com - Backend para subir imágenes
+
+En esta clase se explica cómo configurar cloudinary y un test de subida de archivo a cloudinary via Postman.
 
 ---
 
