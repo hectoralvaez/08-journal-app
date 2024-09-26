@@ -446,9 +446,72 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 - Todo lo que va en los reducers tiene que ser síncrono, no puede ser asíncrono, son reducers, es decir, funciones puras. (🛢️ 299. JournalSlice)
 - Cuando tenemos acciones asincronas como conectar con una base de datos y esperar respuesta, estas acciones asíncronas se trabajan en el `thunks.js` (🛢️ 300. Preparar la base de datos - CloudFirestore)
 
+- Para cambiar el nombre de una variable en un componente (🛢️ 306. Activar una nota para su edición)
+
+En el state de journal, la nota activa está definida como "active", pero para trabajar esa nota activa, dentro del NoteView.jsx tiene más sentido referise a ella como "note".
+
+Para ello, en la desestructuración, hacemos lo siguiente:
+```javascript
+const { active:note } = useSelector( state => state.journal );
+```
+
+- Se recomienda que cada efecto esté lo más aislado y atómico posible, por lo tanto, creamos dos useEffect, uno para crear validadores y el otro para cargar la nota activa. (🛢️ 306. Activar una nota para su edición)
+```javascript
+useEffect(() => {
+    createValidarots();
+}, [formState])
+
+useEffect(() => {
+    setFormState( initialForm );
+}, [initialForm])
+```
+
+
 <br />
 
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
+
+---
+## 🛢️ 306. Activar una nota para su edición
+### `src/journal/views/NoteView.jsx`
+En `src/journal/views/NoteView.jsx` obtenemos la información de la nota activa mediante `useSelector` de nuestro store `journal`:
+
+```javascript
+const { active:note } = useSelector( state => state.journal );
+```
+
+A continuación cargamos `useForm` de la nota desestructurando los campos que vamos a necesitar:
+```javascript
+const { body, title, date, onInputChange, formState } = useForm( note );
+```
+
+Transformamos la data que tenemos almacenada en Firestore a "string":
+```javascript
+const dateString = useMemo(()=> {
+    const newDate = new Date( date );
+    return newDate.toUTCString();
+}, [date]);
+```
+Una vez tenemos la información de la nota, la añadimos al `TextField`:
+```javascript
+<TextField
+    ...
+    name="title"
+    value={ title }
+    onChange={ onInputChange }
+/>
+```
+
+
+### `src/hoks/useForm.js`
+Para hacer que al cambiar la nota activa se se actualicen los campos del formulario hay que hacer un cambio en el hook `useForm.js`.
+Actualmente el problema es que la nota activa cambia, pero el `initialForm`, que es el contenido que carga el formulario, no se actualiza.
+```javascript
+useEffect(() => {
+    setFormState( initialForm );
+}, [initialForm])
+
+```
 
 ---
 ## 🛢️ 305. Activar una nota
@@ -458,7 +521,6 @@ throw new Error ('action.type "ABC" todavía no se ha definido');
 En `src/journal/components/SideBarItem.jsx` añado la función `onClickNote`, que lo que hará será disparar el `dispatch` del "reducer" de `journalSlide` `setActiveNote` que tiene que recibir la información de la nota activa "note":
 
 ```javascript
-
 const dispatch = useDispatch();
 
 const onClickNote = () => {
