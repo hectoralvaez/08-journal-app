@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { SaveOutlined } from "@mui/icons-material"
 import { Button, Grid, TextField, Typography } from "@mui/material"
+import Swal from "sweetalert2"
+import 'sweetalert2/dist/sweetalert2.css'
 
 import { useForm } from "../../hoks/useForm"
 import { ImageGallery } from "../components"
@@ -10,8 +12,10 @@ import { setActiveNote, startSavingNote } from "../../store/journal"
 
 export const NoteView = () => {
     const dispatch = useDispatch();
-    const { active:note } = useSelector( state => state.journal );
+    const { active:note, savedMessage } = useSelector( state => state.journal );
+
     const { body, title, date, onInputChange, formState } = useForm( note );
+
     const dateString = useMemo(()=> {
         const newDate = new Date( date );
         return newDate.toUTCString();
@@ -20,6 +24,13 @@ export const NoteView = () => {
     useEffect(() => {
         dispatch( setActiveNote( formState ) )
     }, [formState])
+
+    useEffect(() => {
+      if ( savedMessage.length > 0 ) {
+        Swal.fire( 'Nota actualizada', savedMessage, 'success' );
+      }
+    }, [savedMessage])
+    
 
     const onSaveNote = () => {
         dispatch( startSavingNote() );

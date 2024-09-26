@@ -389,6 +389,13 @@ Aquí el ejemplo concreto con [Vite.js](https://github.com/mui/material-ui/tree/
 
 # APIS USADAS
 - [breakingbadapi](https://breakingbadapi.com)
+
+---
+
+# RECURSOS
+- [Animate.css](https://animate.style/) permite implementar varias animaciones de manera fácil.
+- [sweetAlert2](https://sweetalert2.github.io/) librería uqe permite implementar mensajes de alerta con un duseño más trabajado.
+
 ---
 
 # EXTRA INFO
@@ -470,6 +477,52 @@ useEffect(() => {
 <br />
 
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
+
+---
+
+## 🛢️ 309. SweetAlert 2
+
+En esta clase añadimos mensajes con "SweetAlert 2".
+
+Para ello, tenemos que definir los mensajes que se van a lanzar en cada reducer de nuestro `journalSlice.js` de manera que cuando tenemos la nota activa `setActiveNote` o guardamos la nota `setSavingNote`, el mensaje tiene que estar vacío.
+
+Pero en el momento de actualizarla `updateNote`, mostramos el mensaje:
+
+```javascript
+state.savedMessage = `${ action.payload.title }, actualizada correctamente`;
+```
+
+### `src/store/journal/journalSlice.js`
+
+```javascript
+setActiveNote: (state, action ) => {
+    ...
+    state.savedMessage = '';
+},
+
+setSavingNote: (state ) => {
+    ...
+    state.savedMessage = '';
+},
+
+updateNote: (state, action ) => {
+    ...
+    state.savedMessage = `${ action.payload.title }, actualizada correctamente`;
+},
+```
+
+
+### `src/journal/views/NoteView.jsx`
+En `NoteView`, añadimos un nuevo `useEffect` que estará controlando el estado de `savedMessage` y en caso de tener contenido el mensaje, cargará el SweetAlert 2 mediante `Swal.fire()`.
+
+```javascript
+useEffect(() => {
+    if ( savedMessage.length > 0 ) {
+    Swal.fire( 'Nota actualizada', savedMessage, 'success' );
+    }
+}, [savedMessage])
+
+```
 
 ---
 
