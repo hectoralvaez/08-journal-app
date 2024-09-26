@@ -473,6 +473,59 @@ useEffect(() => {
 
 ---
 
+## 🛢️ 308. Resolución de la tarea
+
+En esta clase se añade el contenido que hemos  captado del formulario al elemento de la barra lateral sin tener que conectar con Firebase, ya que tenemos la información almacenada en nuestro store.
+
+### `src/store/journal/journalSlice.js`
+En el reducer `updateNote` recorremos el array de notas y en caso de ser la que acabamos de actualizar, se carga ese contenido, si no, se carga la que teníamos de Firebase que no se ha modificado.
+
+```javascript
+reducers: {
+    ...
+    updateNote: (state, action ) => {
+        state.isSaving = false;
+        // Recorremos el array de notas
+        state.notes = state.notes.map( note => {
+            // Si la nota es la que tenemos cargada en nuestro payload, devolvemos ese contenido
+            if ( note.id === action.payload.id ) {
+                return action.payload;
+            }
+            // Si no, la nota que ya teníamos
+            return note;
+        })
+    },
+    ...
+}
+```
+
+### `src/store/journal/thunks.js`
+
+En `startSavingNote`, al final de la función le añadimos el dispatch de `updateNote` que hemos creado anteriormente en el reducer del `journalSlice`.
+
+```javascript
+export const startSavingNote = () => {
+    return async( dispatch, getState) => {
+
+        dispatch( setSavingNote() );
+
+        const { uid } = getState().auth;
+        const { active:note } = getState().journal;
+
+        const noteToFirestore = { ...note };
+        delete noteToFirestore.id;
+
+        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ note.id }` );
+        await setDoc( docRef, noteToFirestore, { merge: true});
+
+        dispatch( updateNote(note));
+
+    }
+}
+```
+
+---
+
 ## 🛢️ 307. Actualizar la nota actual
 
 ### `src/store/journal/thunks.js`
