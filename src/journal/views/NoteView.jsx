@@ -8,7 +8,7 @@ import 'sweetalert2/dist/sweetalert2.css'
 
 import { useForm } from "../../hoks/useForm"
 import { ImageGallery } from "../components"
-import { setActiveNote, startSavingNote } from "../../store/journal"
+import { setActiveNote, startSavingNote, startUploadingFiles } from "../../store/journal"
 
 export const NoteView = () => {
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ export const NoteView = () => {
         if( target.files === 0 ) return;
 
         console.log('subiendo archivos');
-        // dispatch( startUploadingFilees( target.files ) );
+        dispatch( startUploadingFiles( target.files ) );
     }
 
     return (

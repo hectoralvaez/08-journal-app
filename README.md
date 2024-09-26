@@ -482,6 +482,74 @@ useEffect(() => {
 
 ---
 
+## ⭐🛢️ 312. Subir imagen a Cloudinary
+
+### `src/helpers/fileUpload.js`
+1. Creamos un helper para gestionar la subida del archivo:
+
+```javascript
+export const fileUpload = async( file ) => {
+    if ( !file ) throw new Error('No hay archivos que subir');
+
+    const cloudUrl = 'https://api.cloudinary.com/v1_1/doukerhkf/upload';
+
+    const formData = new FormData();
+    formData.append('upload_preset', 'react-journal');
+    formData.append('file', file);
+
+    try {
+
+        const resp = await fetch( cloudUrl, {
+            method: 'POST',
+            body: formData
+        });
+
+        console.log(resp);
+
+        if ( !resp.ok ) throw new Error('No se pudo subir imagen');
+
+        const cloudResp = await resp.json();
+        console.log(cloudResp);
+
+        return cloudResp.secure_url;
+
+    } catch (error) {
+        console.log(error);
+        throw new Error( error.message );
+    }
+}
+```
+
+
+### `src/store/journal/thunks.js`
+2. Creamos un nuevo thunk dentro de journal `startUploadingFiles`:
+
+```javascript
+export const startUploadingFiles = ( files = [] ) => {
+    return async( dispatch ) => {
+        dispatch( setSavingNote() );
+        
+        await fileUpload( files[0] );
+
+    }
+}
+```
+
+### `src/journal/views/NoteView.jsx`
+3. En `NoteView` simplemente hacemos el dispatch de `startUploadingFiles` dentro de la función `onFileInputChange`
+
+```javascript
+const onFileInputChange = ({ target }) => {
+    if( target.files === 0 ) return;
+
+    console.log('subiendo archivos');
+    dispatch( startUploadingFiles( target.files ) );
+}
+```
+
+
+---
+
 ## 🛢️ 311. Seleccionar archivos desde React
 
 ### `src/journal/views/NoteView.jsx`
@@ -523,7 +591,7 @@ const onFileInputChange = ({ target }) => {
     if( target.files === 0 ) return;
 
     console.log('subiendo archivos');
-    // dispatch( startUploadingFilees( target.files ) );
+    // dispatch( startUploadingFiles( target.files ) );
 }
 ```
 
