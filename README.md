@@ -472,6 +472,89 @@ useEffect(() => {
 # 🏁 SECCIÓN 20: ✏️📖♻️🗑️ JournalApp - Redux - CRUD en Firestore y subida de archivos
 
 ---
+
+## 🛢️ 307. Actualizar la nota actual
+
+### `src/store/journal/thunks.js`
+
+Creamos `startSavingNote`:
+```javascript
+export const startSavingNote = () => {
+    return async( dispatch, getState) => {
+
+        // hacemos el dispatch de setSavingNote para establecer isSaving a "true"
+        dispatch( setSavingNote() );
+
+        // Seleccionamos el id de usuario, lo necesitaremos para acceder a la nota activa
+        const { uid } = getState().auth;
+        // Seleccionamos la nota activa
+        const { active:note } = getState().journal;
+
+        // Creamos la constante `noteToFirestore` con toda la info de la nota
+        const noteToFirestore = { ...note };
+
+        // Eliminamos el id de la nota que enviaremos a Firestore
+        delete noteToFirestore.id;
+
+        // Conectamos con FirebaseDB para acceder a la nota con el id de la NOTA ACTIVA (con la info antigua, no la `noteToFirestore` a la que le hemos eliminado el id, pero tiene la info que queremos actualizar)
+        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ note.id }` );
+
+        // Aplicamos el cambio en Firebase con la info de `noteToFirestore`
+        await setDoc( docRef, noteToFirestore, { merge: true});
+
+        // En la tercera opción de `setDoc` tenemos un objeto con opciones. Nosotros usamos `merge`, que al estar en "true", lo que hace es dejar los campos que NO SE ENVÍAN tal y como estaban, por eso hemos eliminado anteriormente el id de noteToFirestore
+
+    }
+}
+```
+
+
+### `src/store/journal/journalSlice.js`
+
+En los reducers `setSavingNote` y `updateNote` actualizamos el estado de `isSaving`
+
+```javascript
+reducers: {
+    ...
+    setSavingNote: (state ) => {
+        state.isSaving = true;
+        // TODO: menaje de error...
+    },
+    updateNote: (state, action ) => {
+        state.isSaving = false;
+        // state.notes = state.notes.map( )
+    },
+    ...
+}
+```
+
+### `src/journal/views/NoteView.jsx`
+
+Al botón de guardar le añadimos la función `onSaveNote`
+```javascript
+<Button 
+    onClick={ onSaveNote }
+    ...
+>
+    Guardar
+</Button>
+```
+
+
+Creamos la función `onSaveNote` y llamamos al `setActiveNote` con la info del `formState`
+
+```javascript
+useEffect(() => {
+    dispatch( setActiveNote( formState ) )
+}, [formState])
+
+const onSaveNote = () => {
+    dispatch( startSavingNote() );
+}
+```
+
+---
+
 ## 🛢️ 306. Activar una nota para su edición
 ### `src/journal/views/NoteView.jsx`
 En `src/journal/views/NoteView.jsx` obtenemos la información de la nota activa mediante `useSelector` de nuestro store `journal`:
