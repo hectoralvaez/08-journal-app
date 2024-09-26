@@ -482,6 +482,68 @@ useEffect(() => {
 
 ---
 
+## ⭐🛢️ 313. Múltiples peticiones de forma simultánea
+
+### `src/store/journal/journalSlice.js`
+
+Añadimos un nuevo reducer `setPhotosToActiveNote` que nos permitirá añadir las urls generadas en cloudinary a nuestra nota activa para poder almacenar esa array de urls de imágenes en Firestore.
+
+Para no perder las urls anteriores, se tiene que esparcir las imágenes anteriores (`...state.active.imageURLS`) y concatenar las nuevas esparcidas también (`...action.payload`)
+
+Además, damos por finalizado el estado de estar guardando con `state.isSaving = false` de manera que volverán a estar activos los botones.
+
+```javascript
+setPhotosToActiveNote: (state, action ) => {
+    state.active.imageURLS = [ ...state.active.imageURLS, ...action.payload ];
+    state.isSaving = false;
+},
+```
+
+### `src/store/journal/thunks.js`
+En el thunk `startUploadingFiles` cambiamos:
+
+`await fileUpload( files[0] )` 
+(que solo nos guardaba la primera imágen)
+
+por:
+
+```javascript
+const fileUploadPromises = [];
+for ( const file of files ) {
+    fileUploadPromises.push( fileUpload( file ))
+}
+
+const photosUrls = await Promise.all( fileUploadPromises );
+
+dispatch( setPhotosToActiveNote( photosUrls ) );
+```
+
+que hace una subida en bloque de las imágenes.
+
+Quedando finalmente el thunk `startUploadingFiles` de la siguiente manera:
+
+```javascript
+export const startUploadingFiles = ( files = [] ) => {
+    return async( dispatch ) => {
+        dispatch( setSavingNote() );
+        
+        // await fileUpload( files[0] );
+
+        const fileUploadPromises = [];
+        for ( const file of files ) {
+            fileUploadPromises.push( fileUpload( file ))
+        }
+
+        const photosUrls = await Promise.all( fileUploadPromises );
+
+        dispatch( setPhotosToActiveNote( photosUrls ) );
+    }
+}
+```
+
+
+---
+
 ## ⭐🛢️ 312. Subir imagen a Cloudinary
 
 ### `src/helpers/fileUpload.js`
