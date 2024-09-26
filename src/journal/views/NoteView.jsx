@@ -12,7 +12,7 @@ import { setActiveNote, startSavingNote } from "../../store/journal"
 
 export const NoteView = () => {
     const dispatch = useDispatch();
-    const { active:note, savedMessage } = useSelector( state => state.journal );
+    const { active:note, savedMessage, isSaving } = useSelector( state => state.journal );
 
     const { body, title, date, onInputChange, formState } = useForm( note );
 
@@ -43,6 +43,7 @@ export const NoteView = () => {
             </Grid>
             <Grid item>
                 <Button 
+                    disabled={ isSaving }
                     onClick={ onSaveNote }
                     color="primary"
                     sx={{ p: 2 }}
