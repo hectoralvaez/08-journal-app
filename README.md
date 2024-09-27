@@ -482,6 +482,15 @@ useEffect(() => {
 
 ---
 
+## 🛢️ 315. Corregir un posible error
+
+### `src/auth/pages/LoginPage.jsx`
+En esta clase se corrige el error que daba en el `formData`.
+
+Ya se resolvió en el commit "FIX para evitar errores de consola."
+
+---
+
 ## ⭐⭐⭐🛢️ 314. Mostrar las imagenes cargadas
 
 ### `src/journal/views/NoteView.jsx`
