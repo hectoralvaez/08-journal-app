@@ -482,6 +482,39 @@ useEffect(() => {
 
 ---
 
+## 🛢️ 316. Limpiar notas al cerrar sesión
+
+### `src/store/journal/journalSlice.js`
+
+En `journalSlice` añadimos el reducer `clearNotesLogout` donde limpiamos el contenido que tenemos almacenado en nuestro store dejando vación el state de los siguientes valores:
+
+```javascript
+clearNotesLogout: (state) => {
+    state.isSaving = false;
+    state.savedMessage = '';
+    state.notes = [];
+    state.active = null;
+},
+```
+
+
+### `src/store/auth/thunks.js`
+En los `thunks` de Auth, añadimos el dispatch para limpiar el contenido de la nota que hemos creado en `journalSlice` (aunque Fernando no es muy partidario de llamar dispatch de otros "stores")
+
+```javascript
+export const startLogout = () => {
+    return async( dispatch ) => {
+        await logoutFirebase();
+
+        dispatch( clearNotesLogout() );
+        dispatch( logout() );
+
+    }
+}
+```
+
+---
+
 ## 🛢️ 315. Corregir un posible error
 
 ### `src/auth/pages/LoginPage.jsx`
