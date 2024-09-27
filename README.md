@@ -482,6 +482,62 @@ useEffect(() => {
 
 ---
 
+## ⭐⭐⭐🛢️ 314. Mostrar las imagenes cargadas
+
+### `src/journal/views/NoteView.jsx`
+
+En `NoteView` buscamos el component `ImageGallery` y le pasamos las urls de las imágenes de la nota activa ("note"):
+
+```javascript
+<ImageGallery images={ note.imageURLS } />
+```
+
+
+### `src/journal/components/ImageGallery.jsx`
+
+En el component `ImageGallery` hacemos el pasado de cargar las imágenes de `itemData` a las urls importadas recorriendo el map de `images`.
+
+```javascript
+export const ImageGallery = ({ images }) => {
+  return (
+    <Box sx={{ width: '100%', height: 500 }}>
+      <ImageList variant="masonry" cols={4} gap={8}>
+        {images.map((image) => (
+          <ImageListItem key={image}>
+            <img
+              srcSet={`${image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${image}?w=248&fit=crop&auto=format`}
+              alt="Imagen de la nota"
+              loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+    </Box>
+  );
+}
+```
+
+El anterior array de imágenes:
+
+```javascript
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
+    title: 'Bed',
+  },
+  ...
+  {
+    img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4',
+    title: 'Coffee table',
+  },
+];
+```
+
+
+
+---
+
 ## ⭐🛢️ 313. Múltiples peticiones de forma simultánea
 
 ### `src/store/journal/journalSlice.js`
