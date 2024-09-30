@@ -482,6 +482,19 @@ useEffect(() => {
 
 ---
 
+## 🛢️ 318. Nota deploy en Vercel
+Si suben la app a Vercel y encuentran un problema al crear una nueva nota, pueden probar a solucionarlo agregando `imageUrls: []` en el archivo `store/journal/thunks.js` en la función `startNewNote`:
+```javascript
+const newNote = {
+    title: "",
+    body: "",
+    imageUrls: [],
+    date: new Date().getTime()
+};
+```
+
+---
+
 ## ⭐🛢️ 317. Borrar una nota
 
 ### `src/store/journal/thunks.js`
