@@ -482,6 +482,76 @@ useEffect(() => {
 
 ---
 
+## ⭐🛢️ 317. Borrar una nota
+
+### `src/store/journal/thunks.js`
+
+De momento no se eliminan las imágenes de cloudinary.
+
+1. En el thunks de journal añadimos la función `startDeletingNote`.
+
+```javascript
+export const startDeletingNote = () => {
+    return async( dispatch, getState ) => {
+        // Recogemos el id de usuario de `auth` y la nota activa de `journal`.
+        const { uid } = getState().auth;
+        const { active: note } = getState().journal;
+
+        // Buscamos la nota a eliminar de firebase con `doc()`
+        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ note.id }` );
+  
+        // Hacemos el "await" de la función `deleteDoc` de `firebase/firestore`
+        await deleteDoc( docRef );
+
+        // Disparamos el `dispatch` de `deleteNoteById`, quedando así eliminada en firebase.
+        dispatch( deleteNoteById( note.id ));
+    }
+}
+```
+
+
+### `src/store/journal/journalSlice.js`
+
+2. Añadimos en `journalSlice` el reducer `deleteNoteById`
+
+```javascript
+deleteNoteById: (state, action ) => {
+    // Marcamos la nota activa como "null" 
+    state.active = null;
+    // Asignamos a las "notas" todas, menos la que viene en el payload, quedando así eliminada de forma local.
+    state.notes = state.notes.filter( note => note.id !== action.payload );
+},
+```
+
+
+### `src/journal/views/NoteView.jsx`
+
+3. Añadimos la función `onDelete` que llamará al thunk `startDeletingNote` (que a su vez llamará al reducer `deleteNoteById`)
+
+```javascript
+const onDelete = () => {
+    dispatch( startDeletingNote() );
+}
+```
+
+4. Añadimos el botón con la función `onDelete`
+
+```javascript
+<Button
+    onClick={ onDelete }
+    sx={{ p: 2 }}
+    color="error"
+>
+    <DeleteOutline />
+    Borrar
+</Button>
+```
+
+
+
+
+---
+
 ## 🛢️ 316. Limpiar notas al cerrar sesión
 
 ### `src/store/journal/journalSlice.js`
