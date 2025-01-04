@@ -1062,7 +1062,7 @@ Una vez tenemos la información de la nota, la añadimos al `TextField`:
 ```
 
 
-### `src/hoks/useForm.js`
+### `src/hooks/useForm.js`
 Para hacer que al cambiar la nota activa se se actualicen los campos del formulario hay que hacer un cambio en el hook `useForm.js`.
 Actualmente el problema es que la nota activa cambia, pero el `initialForm`, que es el contenido que carga el formulario, no se actualiza.
 ```javascript
@@ -1251,7 +1251,7 @@ setNotes: (state, action ) => {
 },
 ```
 
-4. Es importante saber en qué punto llamar a las notas vinculadas al usuario. En nuestro caso, se hace la llamada al `startLoadingNotes` en `src/hoks/useCheckAuth.js`, es decir, en el momento de confirmar que el usuario está autentificado.
+4. Es importante saber en qué punto llamar a las notas vinculadas al usuario. En nuestro caso, se hace la llamada al `startLoadingNotes` en `src/hooks/useCheckAuth.js`, es decir, en el momento de confirmar que el usuario está autentificado.
 ```javascript
 dispatch( startLoadingNotes() );
 ```
@@ -1763,7 +1763,7 @@ Una vez creado el usario mediante el formulario de la RegisterPage, lo podremos 
 ---
 ## 📝 ⚙️ 284. Mostrar errores en pantalla
 
-En `src/hoks/useForm.js`, se añade la constante `isFormValid` que recorre el array `formValidations` para comprobar que ningún campo da error.
+En `src/hooks/useForm.js`, se añade la constante `isFormValid` que recorre el array `formValidations` para comprobar que ningún campo da error.
  
 ```javascript
 const isFormValid = useMemo( () => {
@@ -1827,7 +1827,7 @@ También en `src/auth/pages/RegisterPage.jsx`, a la hora de llamar al hook `useF
     const { displayName, email, password, onInputChange, formState, displayNameValid, emailValid, passwordValid } = useForm( formData, formValidations );
 ```
 
-En `src/hoks/useForm.js`, se añade el objeto `formValidations` que vamos a manipular dentro del mismo hook.
+En `src/hooks/useForm.js`, se añade el objeto `formValidations` que vamos a manipular dentro del mismo hook.
 
 ```javascript
 export const useForm = ( initialForm = {}, formValidations = {} ) => {

@@ -6,7 +6,7 @@ import { Button, Grid, IconButton, TextField, Typography } from "@mui/material"
 import Swal from "sweetalert2"
 import 'sweetalert2/dist/sweetalert2.css'
 
-import { useForm } from "../../hoks/useForm"
+import { useForm } from "../../hooks/useForm"
 import { ImageGallery } from "../components"
 import { setActiveNote, startDeletingNote, startSavingNote, startUploadingFiles } from "../../store/journal"
 

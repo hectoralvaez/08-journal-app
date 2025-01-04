@@ -5,7 +5,7 @@ import { Link as RouterLink} from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import { Alert, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
-import { useForm } from "../../hoks";
+import { useForm } from "../../hooks";
 import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth";
 
 const formData = {
