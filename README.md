@@ -467,7 +467,7 @@ const { active:note } = useSelector( state => state.journal );
 - Se recomienda que cada efecto esté lo más aislado y atómico posible, por lo tanto, creamos dos useEffect, uno para crear validadores y el otro para cargar la nota activa. (🛢️ 306. Activar una nota para su edición)
 ```javascript
 useEffect(() => {
-    createValidarots();
+    createValidators();
 }, [formState])
 
 useEffect(() => {
